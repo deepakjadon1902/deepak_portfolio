@@ -552,27 +552,12 @@ of this software and associated documentation files...
 - Fast initial load time
 - Smooth animations (60fps)
 
----
-
-## 🐛 Known Issues
-
-No known issues at this time. If you discover a bug, please [open an issue](https://github.com/yourusername/portfolio/issues).
-
-
----
-
-## 📞 Support
-
-Need help? Have questions?
-
-- 📧 Email: [your.email@example.com](mailto:your.deepakjadon1907@example.com)
-- 💬 GitHub Issues: [Open an issue](https://github.com/deepakjadon1902/portfolio/issues)
-- 💼 LinkedIn: [Message me](https://www.linkedin.com/in/yourprofile)
 
 ---
 
 <div align="center">
   <h3>🌟 If you found this project helpful, please give it a star! 🌟</h3>
-  <p>Made with ❤️ and TypeScript by <a href="https://github.com/yourusername">Your Name</a></p>
+  <p>Made with ❤️ and TypeScript by <a href="https://github.com/deepakjadon1902">Deepak Jadon</a></p>
   <p>© 2024 Your Name. All rights reserved.</p>
 </div>
+
