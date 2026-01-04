@@ -108,7 +108,7 @@ const Index = () => {
               <TiltCard className="w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 xl:w-72 xl:h-72">
                 <div className="w-full h-full rounded-full overflow-hidden shadow-sky border-4 border-white/20">
                   <img
-                    src="/public/Professional 04.png"
+                    src="/public/images/'Professional 04.png"
                     alt="Deepak Jadon - Full Stack Developer"
                     className="w-full h-full object-cover rounded-full"
                     loading="eager"
