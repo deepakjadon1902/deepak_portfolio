@@ -55,7 +55,7 @@ const Resume = () => {
       icon: Globe,
       label: 'Portfolio',
       value: 'View Live',
-      href: 'https://deepak-s-portfolio-one.vercel.app',
+      href: 'https://djportfoli0.netlify.app/',
     },
   ];
 
@@ -63,7 +63,7 @@ const Resume = () => {
     title: 'Web Developer',
     company: 'BrajMart Private Limited',
     location: 'Vrindavan, India (Remote + On-Site)',
-    period: 'June 2024 – Present',
+    period: 'November 2024 – Present',
     achievements: [
       'Improved UI performance by 40% through code optimization',
       'Reduced API latency by 25% with efficient backend solutions',
@@ -78,7 +78,7 @@ const Resume = () => {
     degree: 'B.Tech in Technology',
     institution: 'GLA University, Mathura',
     period: 'July 2022 – May 2026',
-    cgpa: '7.44/10',
+    cgpa: '7.43/10',
   };
 
   const certifications = [

@@ -104,7 +104,7 @@ const About = () => {
                 <div className="mb-2">
                   <h4 className="text-lg font-semibold text-navy">Web Developer</h4>
                   <p className="text-sky font-medium">BrajMart Private Limited</p>
-                  <p className="text-sm text-muted-foreground mb-4">June 2024 – Present | Vrindavan, India (Remote + On-Site)</p>
+                  <p className="text-sm text-muted-foreground mb-4">November 2024 – Present | Vrindavan, India (Remote + On-Site)</p>
                 </div>
 
                 <div className="space-y-2">
@@ -140,7 +140,7 @@ const About = () => {
               <div className="mb-6">
                 <h4 className="text-lg font-semibold text-navy">B.Tech in Technology</h4>
                 <p className="text-sky font-medium">GLA University, Mathura</p>
-                <p className="text-sm text-muted-foreground">July 2022 – May 2026 | CGPA: 7.44/10</p>
+                <p className="text-sm text-muted-foreground">July 2022 – May 2026 | CGPA: 7.43/10</p>
               </div>
             </motion.div>
 

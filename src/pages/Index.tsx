@@ -337,7 +337,7 @@ const Index = () => {
                 <h3 className="text-2xl sm:text-3xl font-bold text-navy mb-2">
                   Web Developer at BrajMart
                 </h3>
-                <p className="text-muted-foreground mb-6">June 2024 – Present | Remote + On-Site</p>
+                <p className="text-muted-foreground mb-6">November 2024 – Present | Remote + On-Site</p>
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-8">
                   {[
