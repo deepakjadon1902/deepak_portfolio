@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
 
-const RESUME_PDF_URL = '/Deepak Jadon freelance Resume.pdf'; // put PDF in public/deepak-resume.pdf
+const RESUME_PDF_URL = '/Deepak_Jadon_Resume.pdf'; // put PDF in public/deepak-resume.pdf
 
 const Resume = () => {
   const contactInfo = [
