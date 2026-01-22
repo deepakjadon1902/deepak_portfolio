@@ -104,7 +104,7 @@ const About = () => {
                 <div className="mb-2">
                   <h4 className="text-lg font-semibold text-navy">Web Developer</h4>
                   <p className="text-sky font-medium">BrajMart Private Limited</p>
-                  <p className="text-sm text-muted-foreground mb-4">June 2024 – Present | Vrindavan, India (Remote + On-Site)</p>
+                  <p className="text-sm text-muted-foreground mb-4">November 2024 – Present | Vrindavan, India (Remote + On-Site)</p>
                 </div>
 
                 <div className="space-y-2">
