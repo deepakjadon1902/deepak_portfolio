@@ -19,7 +19,7 @@ const projects: Project[] = [
     id: 2,
     title: 'BrajBuzz Tech',
     description: 'Modern company showcase website with dynamic content management and optimized performance for tech businesses.',
-    image: '/images/projects/brajbuzztech.png',
+    image: '/images/projects/brajbuzztech1.png',
     tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Google cloud Youtube API'],
     liveUrl: 'https://www.brajbuzztech.com/',
     githubUrl: 'https://github.com/deepakjadon1902/BrajBuzz_Tech',
