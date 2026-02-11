@@ -28,6 +28,22 @@ const projects: Project[] = [
     featured: true,
   },
   {
+  id: 10,
+  title: 'Shree Giriraj Sewa Sadan',
+  description: 'A fully responsive frontend web application for a charitable trust in Vrindavan that provides affordable and comfortable accommodation for pilgrims. The platform offers complete information about rooms, facilities, nearby spiritual places, and enables direct WhatsApp integration for easy booking and inquiries.',
+  image: '/images/projects/shreegiriraj.png',
+  tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+  liveUrl: 'https://shreegiriraj.vercel.app/',
+  githubUrl: 'https://github.com/deepakjadon1902/shreegiriraj',
+  achievements: [
+    'Fully responsive UI',
+    'WhatsApp integration for direct booking & support',
+    'Clean and informative design',
+    'Optimized performance',
+  ],
+  category: 'Frontend',
+},
+  {
     id: 3,
     title: 'EventFlow',
     description: 'Complete event management system with ticketing, scheduling, and real-time attendee tracking capabilities.',
