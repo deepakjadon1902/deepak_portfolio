@@ -39,7 +39,7 @@ const About = () => {
                   DJ
                 </div>
                 <h3 className="text-xl font-bold text-navy mb-2">Deepak Jadon</h3>
-                <p className="text-sky font-medium mb-4">Full Stack Developer</p>
+                <p className="text-sky font-medium mb-4">Junior Full Stack Developer</p>
                 
                 <div className="space-y-3">
                   {[
@@ -102,9 +102,9 @@ const About = () => {
                 <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-sky" />
                 
                 <div className="mb-2">
-                  <h4 className="text-lg font-semibold text-navy">Web Developer</h4>
+                  <h4 className="text-lg font-semibold text-navy">Junior Web Developer</h4>
                   <p className="text-sky font-medium">BrajMart Private Limited</p>
-                  <p className="text-sm text-muted-foreground mb-4">November 2024 – Present | Vrindavan, India (Remote + On-Site)</p>
+                  <p className="text-sm text-muted-foreground mb-4">January 2025 – Present | Vrindavan, India (Remote + On-Site)</p>
                 </div>
 
                 <div className="space-y-2">
