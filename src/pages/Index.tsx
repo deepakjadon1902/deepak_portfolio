@@ -134,7 +134,7 @@ const Index = () => {
               transition={{ delay: 0.4 }}
               className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl font-medium text-white/90 mb-6"
             >
-              <span>junior Full Stack</span>
+              <span>Junior Full Stack</span>
               <span className="text-sky font-bold">Developer</span>
             </motion.div>
 
