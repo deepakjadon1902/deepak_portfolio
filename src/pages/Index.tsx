@@ -8,7 +8,7 @@ import TiltCard from '@/components/TiltCard';
 const Index = () => {
   const stats = [
     { value: '1+', label: 'Years Experience' },
-    { value: '8+', label: 'Projects Completed' },
+    { value: '10+', label: 'Projects Completed' },
     { value: '40%', label: 'UI Performance Boost' },
     { value: '98', label: 'Lighthouse Score' },
   ];
@@ -134,7 +134,7 @@ const Index = () => {
               transition={{ delay: 0.4 }}
               className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl font-medium text-white/90 mb-6"
             >
-              <span>Full Stack</span>
+              <span>junior Full Stack</span>
               <span className="text-sky font-bold">Developer</span>
             </motion.div>
 
@@ -335,9 +335,9 @@ const Index = () => {
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl font-bold text-navy mb-2">
-                  Web Developer at BrajMart
+                  Junior Web Developer at BrajMart
                 </h3>
-                <p className="text-muted-foreground mb-6">November 2024 – Present | Remote + On-Site</p>
+                <p className="text-muted-foreground mb-6">January 2025 – Present | Remote + On-Site</p>
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-8">
                   {[
