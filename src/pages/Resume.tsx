@@ -60,10 +60,10 @@ const Resume = () => {
   ];
 
   const experience = {
-    title: 'Web Developer',
+    title: 'Junior Web Developer',
     company: 'BrajMart Private Limited',
     location: 'Vrindavan, India (Remote + On-Site)',
-    period: 'November 2024 – Present',
+    period: 'January 2025 – Present',
     achievements: [
       'Improved UI performance by 40% through code optimization',
       'Reduced API latency by 25% with efficient backend solutions',
