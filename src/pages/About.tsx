@@ -21,7 +21,7 @@ const About = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="About Me"
-          subtitle="A passionate Full Stack Developer dedicated to creating exceptional digital experiences"
+          subtitle="A full‑stack developer focused on clean UX, reliable systems, and real business impact"
         />
 
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
@@ -80,17 +80,47 @@ const About = () => {
                 Professional Summary
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Full Stack Developer with <span className="text-sky font-medium">1+ years of experience</span> specializing in React, TypeScript, Node.js, and MongoDB. 
-                I'm passionate about building scalable, user-focused web applications that deliver exceptional performance. 
-                My expertise includes performance optimization, achieving up to 40% UI improvement, and implementing robust authentication systems with JWT and role-based access control.
+                Full Stack Developer with <span className="text-sky font-medium">1+ years of experience</span> building
+                modern web applications using React, TypeScript, Node.js, and MongoDB. I focus on clean architecture,
+                production‑ready UI, and measurable performance gains. I value clear communication, thoughtful UX,
+                and dependable delivery — the kind of work that makes products feel premium and teams feel supported.
               </p>
+            </motion.div>
+
+            {/* Working Style */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="p-6 sm:p-8 rounded-2xl bg-background border border-border"
+            >
+              <h3 className="text-xl font-bold text-navy mb-6 flex items-center gap-2">
+                <Briefcase size={20} className="text-sky" />
+                Working Style
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  { title: 'Structured Delivery', text: 'Clear milestones, scoped tasks, and on‑time releases.' },
+                  { title: 'UX‑First Mindset', text: 'Polished interfaces with accessibility and clarity in focus.' },
+                  { title: 'Quality & Performance', text: 'Fast load times and maintainable, scalable code.' },
+                  { title: 'Team Communication', text: 'Daily updates, honest estimates, and fast feedback loops.' },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="p-4 rounded-xl bg-muted/50 border border-border hover:border-sky/30 transition-colors"
+                  >
+                    <p className="text-sm font-semibold text-navy mb-1">{item.title}</p>
+                    <p className="text-xs text-muted-foreground">{item.text}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
 
             {/* Experience */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
               className="p-6 sm:p-8 rounded-2xl bg-background border border-border"
             >
               <h3 className="text-xl font-bold text-navy mb-6 flex items-center gap-2">
@@ -129,7 +159,7 @@ const About = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
               className="p-6 sm:p-8 rounded-2xl bg-background border border-border"
             >
               <h3 className="text-xl font-bold text-navy mb-6 flex items-center gap-2">
@@ -148,7 +178,7 @@ const About = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
               className="p-6 sm:p-8 rounded-2xl bg-background border border-border"
             >
               <h3 className="text-xl font-bold text-navy mb-6 flex items-center gap-2">

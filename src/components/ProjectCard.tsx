@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
-// Remove TiltCard temporarily if causing issues
-// import TiltCard from './TiltCard';
+import { ExternalLink, Github, FileText, Sparkles } from 'lucide-react';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
 export interface Project {
   id: number;
@@ -14,6 +13,12 @@ export interface Project {
   achievements?: string[];
   category: 'Full-Stack' | 'Frontend' | 'Backend';
   featured?: boolean;
+  screenshots?: string[];
+  caseStudy?: {
+    problem: string;
+    solution: string;
+    impact: string;
+  };
 }
 
 interface ProjectCardProps {
@@ -22,6 +27,9 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
+  const caseStudy = project.caseStudy;
+  const heroScreenshot = project.screenshots?.[0] ?? project.image;
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 40 }}
@@ -30,123 +38,179 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       viewport={{ once: true }}
       className="group/card relative h-full"
     >
-      {/* Replace TiltCard with this simple wrapper */}
-      <div className="relative h-full rounded-3xl bg-gradient-to-br from-slate-50/80 via-white to-slate-50/80 
-                      border border-slate-200/60 shadow-xl backdrop-blur-xl 
-                      hover:shadow-2xl hover:shadow-sky/20 hover:border-sky/40 
-                      transition-all duration-700 overflow-hidden hover:-translate-y-2">
-        
-        {/* Image & Buttons Container */}
-        <div className="relative h-56 lg:h-64 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+      <div
+        className="relative h-full rounded-[28px] bg-white/80 border border-slate-200/70 shadow-xl
+                   hover:shadow-2xl hover:shadow-sky/20 transition-all duration-500 overflow-hidden
+                   hover:-translate-y-2"
+      >
+        {/* Image */}
+        <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-700"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover/card:scale-105"
             loading="lazy"
           />
-          
-          {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent 
-                          opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
-          
-          {/* Category Badge */}
-          <div className="absolute top-5 left-5 z-40">
-            <span className="px-4 py-2 text-xs font-bold rounded-full bg-gradient-to-r from-sky-500 to-blue-500 
-                            text-white shadow-2xl shadow-black/30 tracking-wide">
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
+          <div className="absolute bottom-4 left-4 flex items-center gap-2">
+            <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-white/90 text-slate-900 shadow">
               {project.category}
             </span>
-          </div>
-
-          {/* 🔥 BUTTONS - ABSOLUTE BULLETPROOF Z-INDEX */}
-          <div className="absolute inset-0 flex items-end pb-6 px-6 gap-4 z-50 pointer-events-none">
-            <div className="w-full flex gap-3 pointer-events-none">
-              
-              {/* LIVE BUTTON */}
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/btn flex-1 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 
-                            text-white py-4 px-6 rounded-2xl shadow-2xl shadow-sky-500/40 hover:shadow-sky-500/60 
-                            font-bold text-sm uppercase tracking-wide transition-all duration-300 
-                            transform hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98] 
-                            focus:outline-none focus:ring-4 focus:ring-sky-300/70 focus:ring-offset-2 
-                            ring-offset-transparent pointer-events-auto select-none cursor-pointer 
-                            flex items-center justify-center gap-2 backdrop-blur-sm border border-sky-400/30
-                            hover:border-sky-300/50 z-[9999]"
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                >
-                  <ExternalLink size={18} className="group-hover/btn:rotate-12 transition-transform duration-300" />
-                  <span>Live Demo</span>
-                </a>
-              )}
-              
-              {/* GITHUB BUTTON */}
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/btn p-4 rounded-2xl bg-white/20 hover:bg-white/30 backdrop-blur-xl 
-                            border-2 border-white/40 hover:border-white/60 hover:shadow-2xl hover:shadow-white/30 
-                            text-white transition-all duration-300 transform hover:-translate-y-1 hover:rotate-6 
-                            active:scale-95 focus:outline-none focus:ring-4 focus:ring-white/60 focus:ring-offset-2 
-                            ring-offset-transparent pointer-events-auto select-none cursor-pointer z-[9999]
-                            hover:scale-110"
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                >
-                  <Github size={22} className="transition-all duration-300 group-hover/btn:scale-110" />
-                </a>
-              )}
-            </div>
+            {project.featured && (
+              <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-sky-600 text-white shadow">
+                Featured
+              </span>
+            )}
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-8">
-          <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover/card:text-sky-600 
-                         transition-all duration-500 line-clamp-1 leading-tight">
-            {project.title}
-          </h3>
-          
-          <p className="text-slate-600 mb-6 text-base leading-relaxed line-clamp-2">
-            {project.description}
-          </p>
+        <div className="p-6 sm:p-7 flex flex-col gap-4">
+          <div>
+            <h3 className="text-2xl font-extrabold text-slate-900 mb-2 leading-tight">
+              {project.title}
+            </h3>
+            <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
+              {project.description}
+            </p>
+          </div>
 
           {/* Tech Stack */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {project.tech.slice(0, 5).map((tech, i) => (
-              <motion.span
+          <div className="flex flex-wrap gap-2">
+            {project.tech.slice(0, 5).map((tech) => (
+              <span
                 key={tech}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + i * 0.05 }}
-                className="px-4 py-2 text-sm font-bold rounded-xl bg-gradient-to-r from-slate-100 to-slate-200 
-                          text-slate-700 hover:from-sky-100 hover:to-blue-100 hover:text-sky-700 
-                          shadow-md hover:shadow-sky-200/50 transition-all duration-300 cursor-default"
-                whileHover={{ scale: 1.05, y: -2 }}
+                className="px-3 py-1.5 text-xs font-semibold rounded-full bg-slate-100 text-slate-700
+                          border border-slate-200/60 hover:border-sky/40 hover:text-sky-700 transition-colors"
               >
                 {tech}
-              </motion.span>
+              </span>
             ))}
             {project.tech.length > 5 && (
-              <span className="px-4 py-2 text-sm font-bold rounded-xl bg-sky-100 text-sky-700 
-                              border-2 border-sky-300 shadow-lg">
+              <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-sky-50 text-sky-700 border border-sky-200">
                 +{project.tech.length - 5}
               </span>
             )}
           </div>
 
-          {/* Achievement */}
           {project.achievements?.[0] && (
-            <div className="pt-6 border-t border-slate-200">
-              <p className="text-sky-600 text-lg font-bold flex items-center gap-3">
-                <ArrowRight size={20} className="text-sky-500" />
-                {project.achievements[0]}
-              </p>
+            <div className="flex items-center gap-2 text-sky-700 text-sm font-semibold">
+              <Sparkles size={16} />
+              <span>{project.achievements[0]}</span>
             </div>
           )}
+
+          {/* Actions */}
+          <div className="mt-2 flex flex-wrap gap-3">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky text-white text-sm font-semibold
+                           hover:bg-sky-dark transition-colors"
+              >
+                <ExternalLink size={16} />
+                Live Demo
+              </a>
+            )}
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 text-slate-700
+                           hover:border-sky/40 hover:text-sky-700 transition-colors text-sm font-semibold"
+              >
+                <Github size={16} />
+                Code
+              </a>
+            )}
+            {caseStudy && (
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 text-slate-700
+                               hover:border-sky/40 hover:text-sky-700 transition-colors text-sm font-semibold"
+                  >
+                    <FileText size={16} />
+                    Case Study
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl w-[calc(100%-2rem)] p-0 overflow-hidden">
+                  <div className="grid lg:grid-cols-2 gap-0">
+                    <div className="relative">
+                      <img
+                        src={heroScreenshot}
+                        alt={`${project.title} screenshot`}
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute bottom-4 left-4">
+                        <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-white/90 text-slate-900 shadow">
+                          {project.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-6 sm:p-8 space-y-6">
+                      <div>
+                        <h3 className="text-2xl font-extrabold text-navy mb-2">{project.title}</h3>
+                        <p className="text-sm text-muted-foreground">{project.description}</p>
+                      </div>
+
+                      <div className="grid gap-4">
+                        <div className="p-4 rounded-xl bg-muted/50 border border-border">
+                          <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-2">Problem</p>
+                          <p className="text-sm text-muted-foreground">{caseStudy.problem}</p>
+                        </div>
+                        <div className="p-4 rounded-xl bg-muted/50 border border-border">
+                          <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-2">Solution</p>
+                          <p className="text-sm text-muted-foreground">{caseStudy.solution}</p>
+                        </div>
+                        <div className="p-4 rounded-xl bg-muted/50 border border-border">
+                          <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-2">Impact</p>
+                          <p className="text-sm text-muted-foreground">{caseStudy.impact}</p>
+                        </div>
+                      </div>
+
+                      {project.screenshots && project.screenshots.length > 1 ? (
+                        <div>
+                          <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-3">Screenshots</p>
+                          <div className="grid grid-cols-3 gap-2">
+                            {project.screenshots.slice(0, 3).map((shot) => (
+                              <img
+                                key={shot}
+                                src={shot}
+                                alt="Project screenshot"
+                                className="h-20 w-full object-cover rounded-lg border border-border"
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
+
+                      {project.achievements?.length ? (
+                        <div>
+                          <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-3">Outcomes</p>
+                          <div className="flex flex-wrap gap-2">
+                            {project.achievements.map((item) => (
+                              <span
+                                key={item}
+                                className="px-3 py-1.5 text-xs font-semibold rounded-full bg-sky/10 text-sky-800 border border-sky/20"
+                              >
+                                {item}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            )}
+          </div>
         </div>
       </div>
     </motion.article>

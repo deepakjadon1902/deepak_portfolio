@@ -338,6 +338,17 @@ const Navbar = () => {
           }
         }
 
+        @media (min-width: 1024px) {
+          .menu-button {
+            display: none;
+          }
+
+          .mobile-menu,
+          .mobile-overlay {
+            display: none;
+          }
+        }
+
         @media (max-width: 768px) {
           .logo-desktop {
             font-size: 1.5rem;
@@ -368,7 +379,7 @@ const Navbar = () => {
             </NavLink>
 
             {/* Navigation Links - RIGHT (Laptops/Desktop ONLY) */}
-            <div className="hidden xl:flex items-center">
+            <div className="hidden lg:flex items-center">
               <div className="nav-center-group">
                 {navItems.map((item) => (
                   <NavLink
@@ -387,7 +398,7 @@ const Navbar = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="xl:hidden menu-button"
+              className="lg:hidden menu-button"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X size={24} strokeWidth={2.5} /> : <Menu size={24} strokeWidth={2.5} />}
@@ -405,7 +416,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 xl:hidden"
+              className="mobile-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
@@ -413,7 +424,7 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 250 }}
-              className="mobile-menu fixed top-0 right-0 bottom-0 w-80 shadow-2xl z-50 xl:hidden overflow-y-auto"
+              className="mobile-menu fixed top-0 right-0 bottom-0 w-80 shadow-2xl z-50 lg:hidden overflow-y-auto"
             >
               <div className="flex flex-col h-full p-6 pt-24">
                 <div className="flex-1">

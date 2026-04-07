@@ -47,11 +47,16 @@ const skillCategories = [
       { name: 'Node.js', level: 88 },
       { name: 'Express.js', level: 85 },
       { name: 'MongoDB', level: 85 },
+      { name: 'MongoDB Atlas', level: 82 },
       { name: 'Supabase', level: 80 },
       { name: 'PostgreSQL', level: 75 },
       { name: 'RESTful APIs', level: 90 },
       { name: 'JWT/OAuth', level: 85 },
       { name: 'Role-Based Access', level: 82 },
+      { name: 'Google Auth', level: 85 },
+      { name: 'Email Verification', level: 82 },
+      { name: 'Payment Gateways (PayU, Razorpay)', level: 80 },
+      { name: 'QR Code Payments', level: 78 },
     ],
   },
   {
@@ -65,6 +70,8 @@ const skillCategories = [
       { name: 'Thunder Client', level: 85 },
       { name: 'Figma', level: 75 },
       { name: 'VS Code', level: 95 },
+      { name: 'Hostinger', level: 82 },
+      { name: 'Vercel', level: 85 },
       { name: 'SEO Optimization', level: 80 },
       { name: 'Performance Tuning', level: 85 },
     ],
@@ -163,16 +170,9 @@ const Skills = () => {
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-medium text-navy text-sm group-hover:text-sky transition-colors">{skill.name}</span>
-                      <span className="text-xs font-semibold text-sky">{skill.level}%</span>
                     </div>
                     <div className="w-full h-2 bg-border rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: skillIndex * 0.05 }}
-                        viewport={{ once: true }}
-                        className="h-full rounded-full bg-gradient-to-r from-sky to-sky-light"
-                      />
+                      <div className="h-full w-0 rounded-full bg-gradient-to-r from-sky to-sky-light transition-all duration-300 group-hover:w-full" />
                     </div>
                   </motion.div>
                 ))}
@@ -234,7 +234,7 @@ const Skills = () => {
             Tools I Use <span className="gradient-text-sky">Daily</span>
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
-            {['VS Code', 'Git', 'GitHub', 'Postman', 'Figma', 'Chrome DevTools', 'MongoDB Compass', 'Terminal'].map((tool, index) => (
+            {['VS Code', 'Git', 'GitHub', 'Postman', 'Figma', 'Chrome DevTools', 'MongoDB Atlas', 'Hostinger', 'Vercel', 'Terminal'].map((tool, index) => (
               <motion.span
                 key={tool}
                 initial={{ opacity: 0, scale: 0.8 }}

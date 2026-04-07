@@ -14,24 +14,25 @@ const Index = () => {
   ];
 
   const highlights = [
-    { icon: Code2, title: 'What I Do', description: 'Building scalable web apps with React, Node.js, TypeScript & MongoDB' },
-    { icon: Lightbulb, title: 'Why I Code', description: 'Passionate about creating elegant solutions to complex problems' },
-    { icon: Rocket, title: 'My Vision', description: 'Crafting digital products that make a real impact on users' },
-    { icon: Award, title: 'Key Achievement', description: 'Achieved 40% UI improvement at BrajMart platform' },
+    { icon: Code2, title: 'What I Do', description: 'Build production-ready web apps with React, Node.js, TypeScript, and MongoDB' },
+    { icon: Lightbulb, title: 'How I Think', description: 'User-first, performance-focused, and detail-oriented in every release' },
+    { icon: Rocket, title: 'How I Deliver', description: 'Clear communication, fast iterations, and clean, scalable code' },
+    { icon: Award, title: 'Proof of Impact', description: 'Delivered measurable UI performance gains in production' },
   ];
 
   const services = [
-    { icon: Monitor, title: 'Frontend Development', description: 'Modern, responsive UIs with React, TypeScript & Tailwind CSS' },
-    { icon: Server, title: 'Backend Development', description: 'Robust APIs with Node.js, Express & secure authentication' },
-    { icon: Database, title: 'Database Design', description: 'Scalable data models with MongoDB & PostgreSQL' },
-    { icon: Palette, title: 'UI/UX Design', description: 'User-centered designs with Figma & modern design principles' },
+    { icon: Monitor, title: 'Frontend Development', description: 'Modern, responsive interfaces with strong UX and accessibility' },
+    { icon: Server, title: 'Backend Development', description: 'Secure APIs with authentication, roles, and reliable data flows' },
+    { icon: Database, title: 'Database Design', description: 'Scalable schemas and query optimization for real-world traffic' },
+    { icon: Palette, title: 'UI/UX Design', description: 'Clean, classy layouts that look premium and convert better' },
   ];
 
-  const topSkills = ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Express.js'];
+  const topSkills = ['React', 'TypeScript', 'Node.js', 'MongoDB Atlas', 'Tailwind CSS', 'Express.js'];
 
   const testimonials = [
     { text: 'Improved our platform performance by 40%', author: 'BrajMart Team', role: 'Client' },
     { text: 'Excellent problem-solving skills', author: 'GLA University', role: 'Academics' },
+    { text: 'Deeply checked the project and delivered reliable quality', author: 'Giriraj Sewa Sadan', role: 'Client Review' },
   ];
 
   return (
@@ -144,7 +145,8 @@ const Index = () => {
               transition={{ delay: 0.5 }}
               className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl"
             >
-              Crafting exceptional digital experiences through innovative code, elegant design, and cutting-edge technology solutions. Specialized in React, Node.js & MongoDB.
+              I design and build reliable, high‑performance web products that feel premium and work flawlessly. 
+              Specialized in React, Node.js, and MongoDB with a focus on clean architecture, UX polish, and fast delivery.
             </motion.p>
 
             {/* Social Links */}
@@ -218,6 +220,129 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Recruiter Snapshot */}
+      <section className="relative py-20 bg-gradient-to-b from-background to-muted/40">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">
+              Recruiter <span className="gradient-text-sky">Snapshot</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A quick, high‑signal overview of how I work and what you can expect.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              { title: 'Working Style', value: 'Structured, proactive, and detail‑oriented' },
+              { title: 'Collaboration', value: 'Clear updates, fast feedback loops, calm under pressure' },
+              { title: 'Quality Focus', value: 'Performance, accessibility, and maintainable code' },
+              { title: 'Delivery', value: 'Milestone‑driven, iterative releases' },
+              { title: 'Best Fit', value: 'Product teams, startups, and client projects' },
+              { title: 'Availability', value: 'Remote + freelance opportunities' },
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="p-6 rounded-2xl bg-background border border-border hover:border-sky/30 hover:shadow-lg transition-all"
+              >
+                <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-2">{item.title}</p>
+                <p className="text-navy font-medium">{item.value}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Ideal Role */}
+      <section className="relative py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">
+              Ideal <span className="gradient-text-sky">Role</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              I thrive in teams that value product thinking, clean execution, and measurable impact.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              { title: 'Role Type', text: 'Full Stack / Frontend‑leaning roles with ownership.' },
+              { title: 'Team Style', text: 'Collaborative teams with clear goals and fast feedback.' },
+              { title: 'Product Stage', text: 'Startups or product teams scaling features.' },
+              { title: 'Tech Stack', text: 'React, Node.js, TypeScript, MongoDB, REST APIs.' },
+              { title: 'Quality Focus', text: 'Performance, accessibility, and clean UI polish.' },
+              { title: 'Availability', text: 'Remote + freelance + on‑site hybrid.' },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="p-6 rounded-2xl bg-background border border-border hover:border-sky/30 hover:shadow-lg transition-all"
+              >
+                <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-2">{item.title}</p>
+                <p className="text-navy font-medium">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How I Work */}
+      <section className="relative py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">
+              How I <span className="gradient-text-sky">Work</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A simple, effective process that keeps projects on time and quality high.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {[
+              { title: 'Discover', text: 'Understand goals, users, and constraints before building.' },
+              { title: 'Design', text: 'Plan structure, flows, and UI that feel premium and clear.' },
+              { title: 'Build', text: 'Ship with clean code, testing, and performance focus.' },
+              { title: 'Refine', text: 'Iterate fast using feedback, analytics, and QA.' },
+            ].map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.08 }}
+                viewport={{ once: true }}
+                className="p-6 rounded-2xl bg-navy text-white border border-white/10 hover:border-sky/40 transition-all"
+              >
+                <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-2">Step {index + 1}</p>
+                <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
+                <p className="text-white/70 text-sm">{step.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* Why Choose Me Section */}
       <section className="relative py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -372,6 +497,65 @@ const Index = () => {
                 </Link>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Hire Me */}
+      <section className="relative py-20 bg-gradient-to-b from-muted/40 to-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">
+              Why <span className="gradient-text-sky">Hire Me</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Proof‑points that show how I work, what I deliver, and why teams trust me.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+            <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4">
+              {[
+                { title: 'Performance Impact', text: 'Improved UI performance by 40% in production.' },
+                { title: 'API Reliability', text: 'Reduced latency by 25% with optimized flows.' },
+                { title: 'Quality Mindset', text: '35% fewer production bugs through clean code.' },
+                { title: 'Delivery Confidence', text: 'Structured milestones and clear communication.' },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="p-5 rounded-2xl bg-background border border-border hover:border-sky/30 hover:shadow-md transition-all"
+                >
+                  <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-2">{item.title}</p>
+                  <p className="text-sm text-muted-foreground">{item.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="lg:col-span-2 grid gap-4">
+              {[
+                { text: 'Improved our platform performance by 40%', author: 'BrajMart Team', role: 'Client' },
+                { text: 'Deeply checked the project and delivered reliable quality', author: 'Giriraj Sewa Sadan', role: 'Client Review' },
+              ].map((quote, index) => (
+                <motion.div
+                  key={quote.author}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="p-6 rounded-2xl bg-background border border-border"
+                >
+                  <p className="text-muted-foreground mb-4 italic">"{quote.text}"</p>
+                  <p className="font-semibold text-navy">{quote.author}</p>
+                  <p className="text-sm text-sky">{quote.role}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

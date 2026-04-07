@@ -96,9 +96,27 @@ const Resume = () => {
 
   const skills = {
     frontend: ['React.js', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
-    backend: ['Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'REST APIs'],
-    tools: ['Git', 'GitHub', 'Postman', 'Figma', 'VS Code'],
+    backend: [
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'MongoDB Atlas',
+      'PostgreSQL',
+      'REST APIs',
+      'Google Auth',
+      'Email Verification',
+      'Payment Gateways (PayU, Razorpay)',
+      'QR Code Payments',
+    ],
+    tools: ['Git', 'GitHub', 'Postman', 'Figma', 'VS Code', 'Hostinger', 'Vercel'],
   };
+
+  const highlights = [
+    { label: 'Impact', value: '40% UI performance improvement' },
+    { label: 'Reliability', value: '25% reduced API latency' },
+    { label: 'Quality', value: '35% fewer production bugs' },
+    { label: 'Experience', value: '1+ years in production systems' },
+  ];
 
   return (
     <main className="pt-24 pb-16 sm:pt-32 sm:pb-24">
@@ -107,6 +125,27 @@ const Resume = () => {
           title="My Resume"
           subtitle="A comprehensive overview of my experience and qualifications"
         />
+
+        {/* Highlight Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12"
+        >
+          {highlights.map((item, index) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+              className="p-4 rounded-xl bg-background border border-border hover:border-sky/30 hover:shadow-md transition-all"
+            >
+              <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-1">{item.label}</p>
+              <p className="text-navy font-medium">{item.value}</p>
+            </motion.div>
+          ))}
+        </motion.div>
 
         {/* Download Actions */}
         <motion.div
@@ -213,6 +252,32 @@ const Resume = () => {
               clean code, user-centric design, and delivering high-impact solutions. Available for
               remote work and international freelance opportunities.
             </p>
+          </motion.div>
+
+          {/* Core Strengths */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="p-6 sm:p-8 rounded-2xl bg-background border border-border"
+          >
+            <h2 className="text-xl font-bold text-navy mb-6 text-center">Core Strengths</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                'Performance optimization with measurable gains',
+                'Clean UI systems with premium, modern feel',
+                'Secure authentication and role‑based access',
+                'Clear communication and predictable delivery',
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="p-4 rounded-xl bg-muted/50 border border-border hover:border-sky/30 transition-colors text-sm text-muted-foreground"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Experience & Education Row */}
