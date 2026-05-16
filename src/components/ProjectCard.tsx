@@ -102,7 +102,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
           {/* Actions */}
           <div className="mt-2 flex flex-wrap gap-3">
-            {project.liveUrl && (
+            {project.liveUrl ? (
               <a
                 href={project.liveUrl}
                 target="_blank"
@@ -113,8 +113,21 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 <ExternalLink size={16} />
                 Live Demo
               </a>
+            ) : (
+              <button
+                type="button"
+                disabled
+                aria-disabled="true"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-200 text-slate-500 text-sm font-semibold
+                           cursor-not-allowed"
+                title="Live demo not available"
+              >
+                <ExternalLink size={16} />
+                Live Demo
+              </button>
             )}
-            {project.githubUrl && (
+
+            {project.githubUrl ? (
               <a
                 href={project.githubUrl}
                 target="_blank"
@@ -125,6 +138,18 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 <Github size={16} />
                 Code
               </a>
+            ) : (
+              <button
+                type="button"
+                disabled
+                aria-disabled="true"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 text-slate-500
+                           cursor-not-allowed text-sm font-semibold"
+                title="GitHub link not available"
+              >
+                <Github size={16} />
+                Code
+              </button>
             )}
             {caseStudy && (
               <Dialog>

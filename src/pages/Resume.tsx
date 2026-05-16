@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
 
-const RESUME_PDF_URL = '/profile/Deepak_Jadon_Resume_Freelancer.pdf'; // put PDF in public/deepak-resume.pdf
+const RESUME_PDF_URL = '/profile/Deepak_Jadon_B.Tech(CSE)_GLA_Resume.pdf'; // put PDF in public/deepak-resume.pdf
 
 const Resume = () => {
   const contactInfo = [
@@ -60,16 +60,18 @@ const Resume = () => {
   ];
 
   const experience = {
-    title: 'Junior Web Developer',
-    company: 'BrajMart Private Limited',
+    title: 'Intern (Full Stack Development)',
+    company: 'BrajMart EcomTech LLP',
     location: 'Vrindavan, India (Remote + On-Site)',
-    period: 'January 2025 – Present',
+    period: 'July 2025 – Present',
     achievements: [
       'Improved UI performance by 40% through code optimization',
       'Reduced API latency by 25% with efficient backend solutions',
       'Reduced production bugs by 35% with comprehensive testing',
       'Built scalable MongoDB data models for high-traffic apps',
       'Implemented JWT authentication & role-based access control',
+      'Deployed backend applications on Render, Railway, and Heroku',
+      'Configured frontend deployments on Vercel and Netlify',
       'Collaborated in agile sprints delivering features on time',
     ],
   };
@@ -108,14 +110,14 @@ const Resume = () => {
       'Payment Gateways (PayU, Razorpay)',
       'QR Code Payments',
     ],
-    tools: ['Git', 'GitHub', 'Postman', 'Figma', 'VS Code', 'Hostinger', 'Vercel'],
+    tools: ['Git', 'GitHub', 'Postman', 'Figma', 'VS Code', 'Render', 'Railway', 'Heroku', 'Vercel', 'Netlify'],
   };
 
   const highlights = [
     { label: 'Impact', value: '40% UI performance improvement' },
     { label: 'Reliability', value: '25% reduced API latency' },
     { label: 'Quality', value: '35% fewer production bugs' },
-    { label: 'Experience', value: '1+ years in production systems' },
+    { label: 'Experience', value: '10+ months in production systems' },
   ];
 
   return (
@@ -245,7 +247,7 @@ const Resume = () => {
             </div>
             <p className="text-muted-foreground leading-relaxed">
               Results-driven{' '}
-              <span className="text-sky font-medium">Full Stack Developer</span> with 1+ years of
+              <span className="text-sky font-medium">Full Stack Developer</span> with 10+ months of
               professional experience building scalable web applications. Specialized in React,
               TypeScript, Node.js, and MongoDB with proven expertise in performance optimization
               (40% UI improvement) and API efficiency (25% latency reduction). Passionate about

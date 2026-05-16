@@ -13,7 +13,7 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/deepakjadon1902/My-DriveMate',
     achievements: ['Real-time ride tracking', '95+ Lighthouse performance'],
     category: 'Full-Stack',
-    featured: true,
+    featured: false,
     screenshots: ['/images/projects/drivemate.png'],
     caseStudy: {
       problem: 'Users struggled to find reliable rides quickly, and drivers lacked real-time visibility.',
@@ -54,6 +54,7 @@ const projects: Project[] = [
     'Optimized performance',
   ],
   category: 'Frontend',
+  featured: true,
   screenshots: ['/images/projects/shreegiriraj.png'],
   caseStudy: {
     problem: 'Pilgrims needed clear room details and a simple way to book quickly.',
@@ -81,14 +82,15 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'Social Engagement Platform',
+    title: 'Social Engagement Platform - Liklet',
     description: 'Problem: low engagement from static experiences. Solution: added real‑time features and interactive flows. Impact: higher activity and faster communication.',
     image: '/images/projects/liklet.png',
     tech: ['React', 'MongoDB', 'Socket.io', 'JWT'],
     liveUrl: 'https://www.liklet.com/',
-    githubUrl: 'https://github.com/deepakjadon1902/Liklet',
+    githubUrl: 'https://github.com/deepakjadon1902/Liklet_Portfolio',
     achievements: ['25% reduced API latency'],
     category: 'Full-Stack',
+    featured: true,
     screenshots: ['/images/projects/liklet.png'],
     caseStudy: {
       problem: 'Engagement was low with static user experiences.',
@@ -106,6 +108,7 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/deepakjadon1902/DriveEase',
     achievements: ['Integrated payment gateway'],
     category: 'Full-Stack',
+    featured: false,
     screenshots: ['/images/projects/driveease.png'],
     caseStudy: {
       problem: 'Vehicle service booking was manual and prone to scheduling conflicts.',
@@ -123,6 +126,7 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/deepakjadon1902/Student-Record',
     achievements: ['Analytics dashboard'],
     category: 'Frontend',
+    featured: false,
     screenshots: ['/images/projects/student record.png'],
     caseStudy: {
       problem: 'Student data was scattered, making insights hard to track.',
@@ -140,6 +144,7 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/deepakjadon1902/PicSync-Photo-Gallery-Application',
     achievements: ['Real-time sync'],
     category: 'Full-Stack',
+    featured: false,
     screenshots: ['/images/projects/picsync.png'],
     caseStudy: {
       problem: 'Teams struggled to sync and review images quickly.',
@@ -157,6 +162,7 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/deepakjadon1902/NagrikSahayak-App',
     achievements: ['Multilingual support'],
     category: 'Frontend',
+    featured: false,
     screenshots: ['/images/projects/nagriksahayak.png'],
     caseStudy: {
       problem: 'Citizens lacked a simple way to access local services.',
@@ -174,6 +180,7 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/deepakjadon1902/Task-Managment-System',
     achievements: ['Drag & drop interface'],
     category: 'Frontend',
+    featured: false,
     screenshots: ['/images/projects/time managment.png'],
     caseStudy: {
       problem: 'Teams had limited visibility into task ownership and deadlines.',
@@ -181,11 +188,100 @@ const projects: Project[] = [
       impact: 'Clearer delivery tracking and better team alignment.',
     },
   },
+  {
+    id: 11,
+    title: 'Brindarani',
+    description:
+      'Full-stack e-commerce storefront for a D2C brand: product catalog, cart, checkout, and an admin panel to manage products and orders, with secure auth and transactional email updates.',
+    image: '/images/projects/brindarani.png',
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Nodemailer'],
+    liveUrl: 'https://brinda-rani.vercel.app/',
+    githubUrl: 'https://github.com/deepakjadon1902/BrindaRani',
+    achievements: ['Admin product & order management', 'JWT auth + protected routes', 'Automated email confirmations'],
+    category: 'Full-Stack',
+    featured: true,
+    screenshots: ['/images/projects/brindarani.png'],
+    caseStudy: {
+      problem: 'The brand needed a reliable online store with inventory/order control and clear customer communication.',
+      solution:
+        'Built a full-stack e-commerce app with an admin dashboard, secure authentication, and automated order emails.',
+      impact: 'Reduced manual work for order handling and improved the checkout-to-confirmation experience.',
+    },
+  },
+  {
+    id: 12,
+    title: 'VrindavanSarthi',
+    description:
+      'Pilgrim/travel companion web app for Vrindavan: discover nearby places, get directions, and view essential visit info with a clean mobile-first UI and map-based navigation.',
+    image: '/images/projects/vrindavansarthi.png',
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Google Maps API', 'Geolocation'],
+    liveUrl: 'https://www.vrindavansarthi.in/',
+    githubUrl: 'https://github.com/deepakjadon1902/vrindavan-sarthi',
+    achievements: ['Map-based navigation', 'Mobile-first UX', 'Nearby places discovery'],
+    category: 'Full-Stack',
+    featured: true,
+    screenshots: ['/images/projects/vrindavansarthi.png'],
+    caseStudy: {
+      problem: 'Pilgrims struggled with navigation and finding important locations.',
+      solution: 'Built a map-driven UI with place discovery, directions, and location-aware suggestions.',
+      impact: 'Made it easier to plan and navigate visits, especially on mobile devices.',
+    },
+  },
+  {
+    id: 13,
+    title: 'IntelliHire',
+    description:
+      'AI-assisted hiring tool that parses resumes, extracts structured candidate data, and ranks matches against a job description to speed up shortlisting and reduce manual screening.',
+    image: '/images/projects/intellihire.png',
+    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'OpenAI API', 'Python'],
+    liveUrl: 'https://intelli-hire-rho.vercel.app/',
+    githubUrl: 'https://github.com/deepakjadon1902/IntelliHire',
+    achievements: ['Resume parsing + structured output', 'JD-to-candidate matching', 'Searchable candidate pipeline'],
+    category: 'Full-Stack',
+    featured: true,
+    screenshots: ['/images/projects/intellihire.png'],
+    caseStudy: {
+      problem: 'Manual resume screening was time-consuming and prone to oversight.',
+      solution: 'Built an AI pipeline to extract resume data and score candidates against job requirements.',
+      impact: 'Reduced time-to-shortlist and improved consistency in initial screening.',
+    },
+  },
+  {
+    id: 14,
+    title: 'BrajMart',
+    description:
+      'Production e-commerce experience work: improved UI performance, built/optimized backend APIs, implemented auth & role-based access, and supported deployments across cloud platforms for a smoother shopping and admin workflow.',
+    image: '/images/projects/brajmart.png',
+    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'JWT', 'RBAC', 'Render/Vercel'],
+    liveUrl: 'https://www.brajmart.com/',
+    githubUrl: 'https://github.com/deepakjadon1902/Brajmart',
+    achievements: ['40% UI performance improvement', '25% reduced API latency', 'JWT + role-based access'],
+    category: 'Full-Stack',
+    featured: true,
+    screenshots: ['/images/projects/brajmart.png'],
+    caseStudy: {
+      problem: 'The platform needed faster UI, reliable APIs, and secure access control for growth and stability.',
+      solution:
+        'Optimized front-end performance, improved backend endpoints/data models, and implemented JWT + RBAC.',
+      impact: 'Faster user experience, lower latency, and fewer production issues in day-to-day operations.',
+    },
+  },
 ];
 
 const Projects = () => {
-  const featuredProjects = projects.filter(p => p.featured);
-  const otherProjects = projects.filter(p => !p.featured);
+  // Featured order (as provided by you)
+  const featuredOrder = [14, 13, 11, 4, 2, 12, 3, 10];
+  const featuredIdSet = new Set(featuredOrder);
+
+  const featuredProjects = featuredOrder
+    .map((id) => projects.find((p) => p.id === id))
+    .filter((p): p is Project => Boolean(p))
+    .map((p) => ({ ...p, featured: true }));
+
+  const otherProjects = projects
+    .filter((p) => !featuredIdSet.has(p.id))
+    .sort((a, b) => a.id - b.id)
+    .map((p) => ({ ...p, featured: false }));
 
   return (
     <main className="pt-24 pb-16 sm:pt-32 sm:pb-24">
@@ -248,7 +344,7 @@ const Projects = () => {
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {otherProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index + 3} />
+              <ProjectCard key={project.id} project={project} index={index + featuredProjects.length} />
             ))}
           </div>
         </motion.div>

@@ -39,7 +39,7 @@ const About = () => {
                   DJ
                 </div>
                 <h3 className="text-xl font-bold text-navy mb-2">Deepak Jadon</h3>
-                <p className="text-sky font-medium mb-4">Junior Full Stack Developer</p>
+                <p className="text-sky font-medium mb-4">MERN Stack Developer</p>
                 
                 <div className="space-y-3">
                   {[
@@ -80,7 +80,7 @@ const About = () => {
                 Professional Summary
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Full Stack Developer with <span className="text-sky font-medium">1+ years of experience</span> building
+                Full Stack Developer with <span className="text-sky font-medium">10 + months of experience</span> building
                 modern web applications using React, TypeScript, Node.js, and MongoDB. I focus on clean architecture,
                 production‑ready UI, and measurable performance gains. I value clear communication, thoughtful UX,
                 and dependable delivery — the kind of work that makes products feel premium and teams feel supported.
@@ -132,9 +132,9 @@ const About = () => {
                 <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-sky" />
                 
                 <div className="mb-2">
-                  <h4 className="text-lg font-semibold text-navy">Junior Web Developer</h4>
-                  <p className="text-sky font-medium">BrajMart Private Limited</p>
-                  <p className="text-sm text-muted-foreground mb-4">January 2025 – Present | Vrindavan, India (Remote + On-Site)</p>
+                  <h4 className="text-lg font-semibold text-navy">Intern (Full Stack Development)</h4>
+                  <p className="text-sky font-medium">BrajMart EcomTech LLP</p>
+                  <p className="text-sm text-muted-foreground mb-4">July 2025 – Present | Vrindavan, India (Remote + On-Site)</p>
                 </div>
 
                 <div className="space-y-2">

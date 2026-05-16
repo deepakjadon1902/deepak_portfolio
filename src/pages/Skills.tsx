@@ -60,7 +60,7 @@ const skillCategories = [
     ],
   },
   {
-    title: 'Tools & Testing',
+    title: 'Tools & Deployment',
     icon: Wrench,
     color: 'from-sky-dark to-sky',
     skills: [
@@ -70,8 +70,14 @@ const skillCategories = [
       { name: 'Thunder Client', level: 85 },
       { name: 'Figma', level: 75 },
       { name: 'VS Code', level: 95 },
-      { name: 'Hostinger', level: 82 },
       { name: 'Vercel', level: 85 },
+      { name: 'Netlify', level: 85 },
+      { name: 'Render', level: 82 },
+      { name: 'Railway', level: 80 },
+      { name: 'Heroku', level: 78 },
+      { name: 'Hostinger', level: 82 },
+      { name: 'Backend Deployment', level: 85 },
+      { name: 'Docker (Basic)', level: 72 },
       { name: 'SEO Optimization', level: 80 },
       { name: 'Performance Tuning', level: 85 },
     ],
@@ -98,6 +104,7 @@ const expertiseAreas = [
   { icon: Smartphone, title: 'Responsive Design', description: 'Mobile-first, cross-browser compatible' },
   { icon: Shield, title: 'Security', description: 'JWT, OAuth & role-based access control' },
   { icon: TrendingUp, title: 'Performance', description: '98+ Lighthouse scores & optimization' },
+  { icon: Server, title: 'Backend Deployment', description: 'Render, Railway, Heroku & cloud platforms' },
 ];
 
 const Skills = () => {
