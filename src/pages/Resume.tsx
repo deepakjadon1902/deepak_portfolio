@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
 
-const RESUME_PDF_URL = '/profile/Deepak_Jadon_B.Tech(CSE)_GLA_Resume.pdf'; // put PDF in public/deepak-resume.pdf
+const RESUME_PDF_URL = '/profile/Deepak_Jadon_MERN_Stack_Developer_Resume.pdf';
 
 const Resume = () => {
   const contactInfo = [
@@ -60,27 +60,27 @@ const Resume = () => {
   ];
 
   const experience = {
-    title: 'Intern (Full Stack Development)',
+    title: 'Full Stack Developer (MERN Stack)',
     company: 'BrajMart EcomTech LLP',
-    location: 'Vrindavan, India (Remote + On-Site)',
-    period: 'July 2025 – Present',
+    location: 'Vrindavan, India (On-site)',
+    period: 'Jul 2025 - Present',
     achievements: [
-      'Improved UI performance by 40% through code optimization',
-      'Reduced API latency by 25% with efficient backend solutions',
-      'Reduced production bugs by 35% with comprehensive testing',
-      'Built scalable MongoDB data models for high-traffic apps',
-      'Implemented JWT authentication & role-based access control',
-      'Deployed backend applications on Render, Railway, and Heroku',
-      'Configured frontend deployments on Vercel and Netlify',
-      'Collaborated in agile sprints delivering features on time',
+      'Developed and maintained production-grade full-stack web applications using the MERN stack',
+      'Improved UI responsiveness and cross-device performance by 40%',
+      'Designed and optimized RESTful APIs, reducing average response time by 25%',
+      'Implemented secure JWT authentication and role-based access control for admin and customer roles',
+      'Delivered PayU payment integration with webhook-based order reconciliation',
+      'Solved production issues across frontend, backend, database, and deployment layers',
+      'Managed CI/CD deployments on Vercel and Render',
+      'Collaborated through PR-based Git/GitHub workflows with a 3-person engineering team',
     ],
   };
 
   const education = {
-    degree: 'B.Tech in Technology',
-    institution: 'GLA University, Mathura',
-    period: 'July 2022 – May 2026',
-    cgpa: '7.43/10',
+    degree: 'Bachelor of Technology | Computer Science Engineering',
+    institution: 'GLA University, Mathura, Uttar Pradesh, India',
+    period: 'Jul 2022 - May 2026',
+    cpi: '7.51/10.0',
   };
 
   const certifications = [
@@ -117,7 +117,7 @@ const Resume = () => {
     { label: 'Impact', value: '40% UI performance improvement' },
     { label: 'Reliability', value: '25% reduced API latency' },
     { label: 'Quality', value: '35% fewer production bugs' },
-    { label: 'Experience', value: '10+ months in production systems' },
+    { label: 'Experience', value: '1+ year in production systems' },
   ];
 
   return (
@@ -247,12 +247,12 @@ const Resume = () => {
             </div>
             <p className="text-muted-foreground leading-relaxed">
               Results-driven{' '}
-              <span className="text-sky font-medium">Full Stack Developer</span> with 10+ months of
-              professional experience building scalable web applications. Specialized in React,
-              TypeScript, Node.js, and MongoDB with proven expertise in performance optimization
-              (40% UI improvement) and API efficiency (25% latency reduction). Passionate about
-              clean code, user-centric design, and delivering high-impact solutions. Available for
-              remote work and international freelance opportunities.
+              <span className="text-sky font-medium">Full Stack Developer</span> with 1+ year of
+              production experience building scalable MERN applications. Specialized in React,
+              TypeScript, Node.js, Express.js, and MongoDB with proven expertise in performance
+              optimization, secure authentication, payment flows, and API efficiency. I bring a
+              practical, human approach to problem solving: understand the real issue, simplify the
+              path forward, and deliver features that are reliable for users and maintainable for teams.
             </p>
           </motion.div>
 
@@ -269,8 +269,8 @@ const Resume = () => {
               {[
                 'Performance optimization with measurable gains',
                 'Clean UI systems with premium, modern feel',
-                'Secure authentication and role‑based access',
-                'Clear communication and predictable delivery',
+                'Secure authentication and role-based access',
+                'Practical problem solving and predictable delivery',
               ].map((item) => (
                 <div
                   key={item}
@@ -364,7 +364,7 @@ const Resume = () => {
                   {education.period}
                 </p>
                 <p className="text-sm font-medium text-navy mt-2">
-                  CGPA: {education.cgpa}
+                  CPI: {education.cpi}
                 </p>
               </div>
 

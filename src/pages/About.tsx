@@ -4,11 +4,11 @@ import SectionHeading from '@/components/SectionHeading';
 
 const About = () => {
   const achievements = [
-    'Improved UI performance by 40%',
-    'Reduced API latency by 25%',
-    'Reduced production bugs by 35%',
-    'Built scalable MongoDB data models',
-    'Implemented JWT authentication & role-based access',
+    'Built and maintained production-grade MERN applications',
+    'Improved UI responsiveness and cross-device performance by 40%',
+    'Reduced average API response time by 25%',
+    'Solved payment, authentication, and data-flow problems end to end',
+    'Collaborated through PR-based Git/GitHub workflows',
   ];
 
   const certifications = [
@@ -80,10 +80,10 @@ const About = () => {
                 Professional Summary
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Full Stack Developer with <span className="text-sky font-medium">10 + months of experience</span> building
-                modern web applications using React, TypeScript, Node.js, and MongoDB. I focus on clean architecture,
-                production‑ready UI, and measurable performance gains. I value clear communication, thoughtful UX,
-                and dependable delivery — the kind of work that makes products feel premium and teams feel supported.
+                Full Stack Developer with <span className="text-sky font-medium">1+ year of production experience</span> building
+                modern MERN applications using React, TypeScript, Node.js, Express.js, and MongoDB. I approach work as a
+                practical problem solver: understanding the user need, finding the simplest reliable path, and shipping
+                production-ready features that improve performance, security, and day-to-day product quality.
               </p>
             </motion.div>
 
@@ -100,8 +100,8 @@ const About = () => {
               </h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { title: 'Structured Delivery', text: 'Clear milestones, scoped tasks, and on‑time releases.' },
-                  { title: 'UX‑First Mindset', text: 'Polished interfaces with accessibility and clarity in focus.' },
+                  { title: 'Problem Solving', text: 'I break unclear issues into clear, testable steps.' },
+                  { title: 'UX-First Mindset', text: 'Polished interfaces with accessibility and clarity in focus.' },
                   { title: 'Quality & Performance', text: 'Fast load times and maintainable, scalable code.' },
                   { title: 'Team Communication', text: 'Daily updates, honest estimates, and fast feedback loops.' },
                 ].map((item) => (
@@ -132,9 +132,9 @@ const About = () => {
                 <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-sky" />
                 
                 <div className="mb-2">
-                  <h4 className="text-lg font-semibold text-navy">Intern (Full Stack Development)</h4>
+                  <h4 className="text-lg font-semibold text-navy">Full Stack Developer (MERN Stack)</h4>
                   <p className="text-sky font-medium">BrajMart EcomTech LLP</p>
-                  <p className="text-sm text-muted-foreground mb-4">July 2025 – Present | Vrindavan, India (Remote + On-Site)</p>
+                  <p className="text-sm text-muted-foreground mb-4">Jul 2025 - Present | Vrindavan, India (On-site)</p>
                 </div>
 
                 <div className="space-y-2">
@@ -168,9 +168,9 @@ const About = () => {
               </h3>
 
               <div className="mb-6">
-                <h4 className="text-lg font-semibold text-navy">B.Tech in Technology</h4>
-                <p className="text-sky font-medium">GLA University, Mathura</p>
-                <p className="text-sm text-muted-foreground">July 2022 – May 2026 | CGPA: 7.43/10</p>
+                <h4 className="text-lg font-semibold text-navy">Bachelor of Technology | Computer Science Engineering</h4>
+                <p className="text-sky font-medium">GLA University, Mathura, Uttar Pradesh, India</p>
+                <p className="text-sm text-muted-foreground">Jul 2022 - May 2026 | CPI: 7.51/10.0</p>
               </div>
             </motion.div>
 

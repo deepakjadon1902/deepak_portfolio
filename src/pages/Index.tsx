@@ -7,7 +7,7 @@ import TiltCard from '@/components/TiltCard';
 
 const Index = () => {
   const stats = [
-    { value: '10+', label: 'Months Experience' },
+    { value: '1+', label: 'Year Experience' },
     { value: '10+', label: 'Projects Completed' },
     { value: '40%', label: 'UI Performance Boost' },
     { value: '98', label: 'Lighthouse Score' },
@@ -15,8 +15,8 @@ const Index = () => {
 
   const highlights = [
     { icon: Code2, title: 'What I Do', description: 'Build production-ready web apps with React, Node.js, TypeScript, and MongoDB' },
-    { icon: Lightbulb, title: 'How I Think', description: 'User-first, performance-focused, and detail-oriented in every release' },
-    { icon: Rocket, title: 'How I Deliver', description: 'Clear communication, fast iterations, and clean, scalable code' },
+    { icon: Lightbulb, title: 'How I Think', description: 'Human-first problem solving, performance focus, and careful execution' },
+    { icon: Rocket, title: 'How I Deliver', description: 'Clear communication, fast iterations, and clean, scalable production code' },
     { icon: Award, title: 'Proof of Impact', description: 'Delivered measurable UI performance gains in production' },
   ];
 
@@ -242,12 +242,12 @@ const Index = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
-              { title: 'Working Style', value: 'Structured, proactive, and detail‑oriented' },
+              { title: 'Working Style', value: 'Structured, proactive, and problem-solving focused' },
               { title: 'Collaboration', value: 'Clear updates, fast feedback loops, calm under pressure' },
               { title: 'Quality Focus', value: 'Performance, accessibility, and maintainable code' },
               { title: 'Delivery', value: 'Milestone‑driven, iterative releases' },
               { title: 'Best Fit', value: 'Product teams, startups, and client projects' },
-              { title: 'Availability', value: 'Remote + freelance opportunities' },
+              { title: 'Current Work', value: 'Full-time on-site MERN development at BrajMart' },
             ].map((item, index) => (
               <motion.div
                 key={item.title}
@@ -290,7 +290,7 @@ const Index = () => {
               { title: 'Product Stage', text: 'Startups or product teams scaling features.' },
               { title: 'Tech Stack', text: 'React, Node.js, TypeScript, MongoDB, REST APIs.' },
               { title: 'Quality Focus', text: 'Performance, accessibility, and clean UI polish.' },
-              { title: 'Availability', text: 'Remote + freelance + on‑site hybrid.' },
+              { title: 'Current Mode', text: 'Full-time on-site MERN development with production ownership.' },
             ].map((item) => (
               <div
                 key={item.title}
@@ -462,16 +462,16 @@ const Index = () => {
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl font-bold text-navy mb-2">
-                  Intern at BrajMart EcomTech LLP
+                  Full Stack Developer at BrajMart EcomTech LLP
                 </h3>
-                <p className="text-muted-foreground mb-6">July 2025 – Present | Remote + On-Site</p>
+                <p className="text-muted-foreground mb-6">Jul 2025 - Present | Vrindavan, India (On-site)</p>
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-8">
                   {[
+                    'Built production-grade MERN applications',
                     'Improved UI performance by 40%',
                     'Reduced API latency by 25%',
-                    'Reduced production bugs by 35%',
-                    'Built scalable MongoDB models',
+                    'Solved payment and authentication flows',
                   ].map((achievement, index) => (
                     <motion.div
                       key={index}
@@ -527,7 +527,7 @@ const Index = () => {
                 { title: 'Performance Impact', text: 'Improved UI performance by 40% in production.' },
                 { title: 'API Reliability', text: 'Reduced latency by 25% with optimized flows.' },
                 { title: 'Quality Mindset', text: '35% fewer production bugs through clean code.' },
-                { title: 'Delivery Confidence', text: 'Structured milestones and clear communication.' },
+                { title: 'Problem Solving', text: 'Turns unclear product issues into practical, reliable fixes.' },
               ].map((item) => (
                 <div
                   key={item.title}
