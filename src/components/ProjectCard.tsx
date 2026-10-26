@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { ExternalLink, Github, FileText, Sparkles } from 'lucide-react';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { ArrowUpRight, ArrowRight, Github } from 'lucide-react';
+import useReveal from '@/hooks/use-reveal';
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 export interface Project {
   id: number;
@@ -14,232 +14,49 @@ export interface Project {
   category: 'Full-Stack' | 'Frontend' | 'Backend';
   featured?: boolean;
   screenshots?: string[];
-  caseStudy?: {
-    problem: string;
-    solution: string;
-    impact: string;
-  };
+  caseStudy?: { problem: string; solution: string; impact: string };
 }
 
-interface ProjectCardProps {
-  project: Project;
-  index: number;
-}
-
-const ProjectCard = ({ project, index }: ProjectCardProps) => {
-  const caseStudy = project.caseStudy;
-  const heroScreenshot = project.screenshots?.[0] ?? project.image;
-
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="group/card relative h-full"
-    >
-      <div
-        className="relative h-full rounded-[28px] bg-white/80 border border-slate-200/70 shadow-xl
-                   hover:shadow-2xl hover:shadow-sky/20 transition-all duration-500 overflow-hidden
-                   hover:-translate-y-2"
-      >
-        {/* Image */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover/card:scale-105"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
-          <div className="absolute bottom-4 left-4 flex items-center gap-2">
-            <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-white/90 text-slate-900 shadow">
-              {project.category}
-            </span>
-            {project.featured && (
-              <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-sky-600 text-white shadow">
-                Featured
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6 sm:p-7 flex flex-col gap-4">
-          <div>
-            <h3 className="text-2xl font-extrabold text-slate-900 mb-2 leading-tight">
-              {project.title}
-            </h3>
-            <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
-              {project.description}
-            </p>
-          </div>
-
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-2">
-            {project.tech.slice(0, 5).map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1.5 text-xs font-semibold rounded-full bg-slate-100 text-slate-700
-                          border border-slate-200/60 hover:border-sky/40 hover:text-sky-700 transition-colors"
-              >
-                {tech}
-              </span>
-            ))}
-            {project.tech.length > 5 && (
-              <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-sky-50 text-sky-700 border border-sky-200">
-                +{project.tech.length - 5}
-              </span>
-            )}
-          </div>
-
-          {project.achievements?.[0] && (
-            <div className="flex items-center gap-2 text-sky-700 text-sm font-semibold">
-              <Sparkles size={16} />
-              <span>{project.achievements[0]}</span>
-            </div>
-          )}
-
-          {/* Actions */}
-          <div className="mt-2 flex flex-wrap gap-3">
-            {project.liveUrl ? (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky text-white text-sm font-semibold
-                           hover:bg-sky-dark transition-colors"
-              >
-                <ExternalLink size={16} />
-                Live Demo
-              </a>
-            ) : (
-              <button
-                type="button"
-                disabled
-                aria-disabled="true"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-200 text-slate-500 text-sm font-semibold
-                           cursor-not-allowed"
-                title="Live demo not available"
-              >
-                <ExternalLink size={16} />
-                Live Demo
-              </button>
-            )}
-
-            {project.githubUrl ? (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 text-slate-700
-                           hover:border-sky/40 hover:text-sky-700 transition-colors text-sm font-semibold"
-              >
-                <Github size={16} />
-                Code
-              </a>
-            ) : (
-              <button
-                type="button"
-                disabled
-                aria-disabled="true"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 text-slate-500
-                           cursor-not-allowed text-sm font-semibold"
-                title="GitHub link not available"
-              >
-                <Github size={16} />
-                Code
-              </button>
-            )}
-            {caseStudy && (
-              <Dialog>
-                <DialogTrigger asChild>
-                  <button
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 text-slate-700
-                               hover:border-sky/40 hover:text-sky-700 transition-colors text-sm font-semibold"
-                  >
-                    <FileText size={16} />
-                    Case Study
-                  </button>
-                </DialogTrigger>
-                <DialogContent className="max-w-4xl w-[calc(100%-2rem)] p-0 overflow-hidden">
-                  <div className="grid lg:grid-cols-2 gap-0">
-                    <div className="relative">
-                      <img
-                        src={heroScreenshot}
-                        alt={`${project.title} screenshot`}
-                        className="h-full w-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                      <div className="absolute bottom-4 left-4">
-                        <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-white/90 text-slate-900 shadow">
-                          {project.category}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="p-6 sm:p-8 space-y-6">
-                      <div>
-                        <h3 className="text-2xl font-extrabold text-navy mb-2">{project.title}</h3>
-                        <p className="text-sm text-muted-foreground">{project.description}</p>
-                      </div>
-
-                      <div className="grid gap-4">
-                        <div className="p-4 rounded-xl bg-muted/50 border border-border">
-                          <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-2">Problem</p>
-                          <p className="text-sm text-muted-foreground">{caseStudy.problem}</p>
-                        </div>
-                        <div className="p-4 rounded-xl bg-muted/50 border border-border">
-                          <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-2">Solution</p>
-                          <p className="text-sm text-muted-foreground">{caseStudy.solution}</p>
-                        </div>
-                        <div className="p-4 rounded-xl bg-muted/50 border border-border">
-                          <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-2">Impact</p>
-                          <p className="text-sm text-muted-foreground">{caseStudy.impact}</p>
-                        </div>
-                      </div>
-
-                      {project.screenshots && project.screenshots.length > 1 ? (
-                        <div>
-                          <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-3">Screenshots</p>
-                          <div className="grid grid-cols-3 gap-2">
-                            {project.screenshots.slice(0, 3).map((shot) => (
-                              <img
-                                key={shot}
-                                src={shot}
-                                alt="Project screenshot"
-                                className="h-20 w-full object-cover rounded-lg border border-border"
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      ) : null}
-
-                      {project.achievements?.length ? (
-                        <div>
-                          <p className="text-xs uppercase tracking-widest text-sky font-semibold mb-3">Outcomes</p>
-                          <div className="flex flex-wrap gap-2">
-                            {project.achievements.map((item) => (
-                              <span
-                                key={item}
-                                className="px-3 py-1.5 text-xs font-semibold rounded-full bg-sky/10 text-sky-800 border border-sky/20"
-                              >
-                                {item}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      ) : null}
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            )}
-          </div>
-        </div>
-      </div>
-    </motion.article>
-  );
+const projectContext: Record<number, string> = {
+  14: 'E-commerce / Production development',
+  13: 'Hiring platform / Full stack application',
+  11: 'E-commerce / Storefront & administration',
 };
 
-export default ProjectCard;
+export default function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
+  const revealRef = useReveal<HTMLElement>();
+  return (
+    <article ref={revealRef} className={`project-card project-tone-${index % 3}`}>
+      <a className="project-preview" href={project.liveUrl ?? project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}, opens in a new tab`}>
+        <img src={project.image} alt={`${project.title} website screenshot`} loading="lazy" width="960" height="600" />
+        <span className="preview-open" aria-hidden="true"><ArrowUpRight size={20} /></span>
+      </a>
+      <div className="project-content">
+        <p className="project-meta">{projectContext[project.id] ?? (project.category === 'Full-Stack' ? 'Full stack application' : 'Frontend development')}</p>
+        <h3>{project.title}</h3>
+        <p className="project-description">{project.description}</p>
+        <div className="tags" aria-label="Technologies">{project.tech.slice(0, 4).map(tech => <span key={tech}>{tech}</span>)}</div>
+        <div className="project-actions">
+          {project.caseStudy && <Dialog>
+            <DialogTrigger asChild><button className="text-link" aria-label={`Read ${project.title} case study`}>About the project <ArrowRight size={16} /></button></DialogTrigger>
+            <DialogContent className="project-dialog">
+              <div className="dialog-image"><img src={project.image} alt={`${project.title} full website preview`} /></div>
+              <div className="dialog-copy">
+                <p className="eyebrow">{project.category === 'Full-Stack' ? 'Full stack development' : 'Frontend development'}</p>
+                <DialogTitle>{project.title}</DialogTitle>
+                <DialogDescription>{project.description}</DialogDescription>
+                <div className="case-study-grid">{[['The brief', project.caseStudy.problem], ['My approach', project.caseStudy.solution], ['The result', project.caseStudy.impact]].map(([title, text]) => <section key={title}><h3>{title}</h3><p>{text}</p></section>)}</div>
+                <div className="tags">{project.tech.map(tech => <span key={tech}>{tech}</span>)}</div>
+                <div className="button-row">
+                  {project.liveUrl && <a className="button button-small" href={project.liveUrl} target="_blank" rel="noopener noreferrer">Visit website <ArrowUpRight size={16} /></a>}
+                  {project.githubUrl && <a className="button button-secondary button-small" href={project.githubUrl} target="_blank" rel="noopener noreferrer"><Github size={16} />Source code</a>}
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>}
+          {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-code-link" aria-label={`${project.title} source code, opens in a new tab`}><Github size={17} /><span>Code</span></a>}
+        </div>
+      </div>
+    </article>
+  );
+}

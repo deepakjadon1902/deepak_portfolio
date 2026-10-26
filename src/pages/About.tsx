@@ -1,213 +1,40 @@
-import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Calendar, Briefcase, GraduationCap, Award, CheckCircle2 } from 'lucide-react';
-import SectionHeading from '@/components/SectionHeading';
+import { ArrowUpRight, BriefcaseBusiness, Code2, GraduationCap, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import PageIntro from '@/components/PageIntro';
+import ContactCTA from '@/components/ContactCTA';
+import { experience, profile } from '@/data/portfolio';
 
-const About = () => {
-  const achievements = [
-    'Built and maintained production-grade MERN applications',
-    'Improved UI responsiveness and cross-device performance by 40%',
-    'Reduced average API response time by 25%',
-    'Solved payment, authentication, and data-flow problems end to end',
-    'Collaborated through PR-based Git/GitHub workflows',
-  ];
-
-  const certifications = [
-    { name: 'Environmental Engineering', institution: 'IIT Kharagpur', year: '2024' },
-    { name: 'Leadership & Team Effectiveness', institution: 'IIT Guwahati', year: '2025' },
-  ];
-
+export default function About() {
   return (
-    <main className="pt-24 pb-16 sm:pt-32 sm:pb-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="About Me"
-          subtitle="A full‑stack developer focused on clean UX, reliable systems, and real business impact"
-        />
-
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-          {/* Personal Info Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-1"
-          >
-            <div className="sticky top-28 space-y-6">
-              {/* Profile Card */}
-              <div className="p-6 rounded-2xl bg-background border border-border">
-                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-sky to-navy flex items-center justify-center text-3xl font-bold text-white mb-4">
-                  DJ
-                </div>
-                <h3 className="text-xl font-bold text-navy mb-2">Deepak Jadon</h3>
-                <p className="text-sky font-medium mb-4">MERN Stack Developer</p>
-                
-                <div className="space-y-3">
-                  {[
-                    { icon: MapPin, text: 'Mathura, Uttar Pradesh' },
-                    { icon: Phone, text: '+91 91493 70081' },
-                    { icon: Mail, text: 'deepakjadon1907@gmail.com' },
-                  ].map(({ icon: Icon, text }) => (
-                    <div key={text} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <Icon size={16} className="text-sky" />
-                      <span>{text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Availability Badge */}
-              <div className="p-4 rounded-xl bg-sky/10 border border-sky/20">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-sm font-medium text-navy">Available for work</span>
-                </div>
-                <p className="text-xs text-muted-foreground">Open for remote work & freelance projects</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Professional Summary */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="p-6 sm:p-8 rounded-2xl bg-background border border-border"
-            >
-              <h3 className="text-xl font-bold text-navy mb-4 flex items-center gap-2">
-                <Briefcase size={20} className="text-sky" />
-                Professional Summary
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Full Stack Developer with <span className="text-sky font-medium">1+ year of production experience</span> building
-                modern MERN applications using React, TypeScript, Node.js, Express.js, and MongoDB. I approach work as a
-                practical problem solver: understanding the user need, finding the simplest reliable path, and shipping
-                production-ready features that improve performance, security, and day-to-day product quality.
-              </p>
-            </motion.div>
-
-            {/* Working Style */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="p-6 sm:p-8 rounded-2xl bg-background border border-border"
-            >
-              <h3 className="text-xl font-bold text-navy mb-6 flex items-center gap-2">
-                <Briefcase size={20} className="text-sky" />
-                Working Style
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  { title: 'Problem Solving', text: 'I break unclear issues into clear, testable steps.' },
-                  { title: 'UX-First Mindset', text: 'Polished interfaces with accessibility and clarity in focus.' },
-                  { title: 'Quality & Performance', text: 'Fast load times and maintainable, scalable code.' },
-                  { title: 'Team Communication', text: 'Daily updates, honest estimates, and fast feedback loops.' },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="p-4 rounded-xl bg-muted/50 border border-border hover:border-sky/30 transition-colors"
-                  >
-                    <p className="text-sm font-semibold text-navy mb-1">{item.title}</p>
-                    <p className="text-xs text-muted-foreground">{item.text}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Experience */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="p-6 sm:p-8 rounded-2xl bg-background border border-border"
-            >
-              <h3 className="text-xl font-bold text-navy mb-6 flex items-center gap-2">
-                <Calendar size={20} className="text-sky" />
-                Work Experience
-              </h3>
-
-              <div className="relative pl-6 border-l-2 border-sky/30">
-                <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-sky" />
-                
-                <div className="mb-2">
-                  <h4 className="text-lg font-semibold text-navy">Full Stack Developer (MERN Stack)</h4>
-                  <p className="text-sky font-medium">BrajMart EcomTech LLP</p>
-                  <p className="text-sm text-muted-foreground mb-4">Jul 2025 - Present | Vrindavan, India (On-site)</p>
-                </div>
-
-                <div className="space-y-2">
-                  {achievements.map((achievement, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-start gap-2"
-                    >
-                      <CheckCircle2 size={16} className="text-sky mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{achievement}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Education */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="p-6 sm:p-8 rounded-2xl bg-background border border-border"
-            >
-              <h3 className="text-xl font-bold text-navy mb-6 flex items-center gap-2">
-                <GraduationCap size={20} className="text-sky" />
-                Education
-              </h3>
-
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold text-navy">Bachelor of Technology | Computer Science Engineering</h4>
-                <p className="text-sky font-medium">GLA University, Mathura, Uttar Pradesh, India</p>
-                <p className="text-sm text-muted-foreground">Jul 2022 - May 2026 | CPI: 7.51/10.0</p>
-              </div>
-            </motion.div>
-
-            {/* Certifications */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-              className="p-6 sm:p-8 rounded-2xl bg-background border border-border"
-            >
-              <h3 className="text-xl font-bold text-navy mb-6 flex items-center gap-2">
-                <Award size={20} className="text-sky" />
-                Certifications
-              </h3>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                {certifications.map((cert, index) => (
-                  <motion.div
-                    key={cert.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="p-4 rounded-xl bg-muted/50 border border-border hover:border-sky/30 transition-colors"
-                  >
-                    <h4 className="font-medium text-navy mb-1">{cert.name}</h4>
-                    <p className="text-sm text-sky">{cert.institution}</p>
-                    <p className="text-xs text-muted-foreground">{cert.year}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+    <main id="main" tabIndex={-1}>
+      <div className="shell page-shell">
+        <PageIntro eyebrow="A little background" title={<>About me<span className="accent">.</span></>} description="I’m Deepak, a full stack developer based in Mathura, Uttar Pradesh. I work with the MERN stack and build websites and applications for businesses and product teams." />
+        <div className="about-layout">
+          <aside className="profile-panel">
+            <div className="profile-portrait"><img src="/profile/profile.png" alt="Deepak Jadon" width="220" height="220" /></div>
+            <h2>Deepak Jadon</h2><p>Full Stack Developer</p>
+            <div className="profile-location"><MapPin size={15} />Mathura, India</div>
+            <span className="availability"><i />Open to freelance projects</span>
+            <a className="text-link profile-email" href={`mailto:${profile.email}`}>Say hello <ArrowUpRight size={16} /></a>
+          </aside>
+          <div className="about-story">
+            <h2>My work covers both sides<br />of a web application.</h2>
+            <p>I’m comfortable moving between a React interface, an Express API, and a MongoDB data model. I like understanding how the pieces connect, especially when a small change in one part can make the whole experience work better.</p>
+            <p>At BrajMart, I work on production e-commerce: storefront features, authentication, payment flows, backend improvements, and deployment. Freelance projects give me the opportunity to work directly with clients and take a website from requirements to release.</p>
+            <p>I studied Computer Science at GLA University in Mathura. Most of my practical learning has come from building projects, reviewing code, and working through real issues in production.</p>
+            <div className="about-working"><h3>Working together</h3><p>I value clear requirements, regular feedback, and honest communication about progress. I’m open to remote roles and freelance projects where I can contribute across the stack.</p><Link className="text-link" to="/contact">Discuss a project or role <ArrowUpRight size={16} /></Link></div>
           </div>
         </div>
+        <section className="section journey-section">
+          <div className="section-top"><h2>Experience & education</h2><Link to="/resume" className="text-link">Full resume <ArrowUpRight size={17} /></Link></div>
+          <div className="journey-grid">
+            <article><div className="journey-icon"><BriefcaseBusiness size={22} /></div><p className="mono">{experience.period}</p><h3>{experience.title}</h3><h4>{experience.company}</h4><p>MERN development, production e-commerce, integrations, and deployment.</p></article>
+            <article><div className="journey-icon"><Code2 size={22} /></div><p className="mono">Project-based work</p><h3>Freelance developer</h3><h4>Websites & web applications</h4><p>Business websites, storefronts, and custom web applications.</p></article>
+            <article><div className="journey-icon"><GraduationCap size={22} /></div><p className="mono">2022 — 2026</p><h3>B.Tech, Computer Science</h3><h4>GLA University, Mathura</h4><p>Computer science and engineering. CPI: 7.51 / 10.0.</p></article>
+          </div>
+        </section>
       </div>
+      <ContactCTA />
     </main>
   );
-};
-
-export default About;
+}

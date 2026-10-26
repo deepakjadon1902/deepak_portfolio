@@ -1,615 +1,130 @@
-// import { useState } from 'react';
-// import { motion } from 'framer-motion';
-// import { Send, Mail, Phone, MapPin, Github, Linkedin, CheckCircle2, Loader2 } from 'lucide-react';
-// import emailjs from '@emailjs/browser';
-// import { useToast } from '@/hooks/use-toast';
-// import SectionHeading from '@/components/SectionHeading';
-
-// const Contact = () => {
-//   const { toast } = useToast();
-//   const [isSubmitting, setIsSubmitting] = useState(false);
-//   const [isSubmitted, setIsSubmitted] = useState(false);
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     email: '',
-//     subject: '',
-//     message: '',
-//   });
-
-//   // EmailJS Configuration
-//   const EMAILJS_SERVICE_ID = 'service_8r71maa';
-//   const EMAILJS_TEMPLATE_ID = 'template_24zgst5';
-//   const EMAILJS_AUTO_REPLY_TEMPLATE_ID = 'template_YOUR_AUTO_REPLY_ID'; // Add your auto-reply template ID here
-//   const EMAILJS_PUBLIC_KEY = 'hRvRaFAOHU2s1ZEeZ';
-
-//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-//     setFormData({
-//       ...formData,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-//     setIsSubmitting(true);
-
-//     try {
-//       // Send email to you (the recipient)
-//       await emailjs.send(
-//         EMAILJS_SERVICE_ID,
-//         EMAILJS_TEMPLATE_ID,
-//         {
-//           from_name: formData.name,
-//           from_email: formData.email,
-//           subject: formData.subject || 'No Subject',
-//           message: formData.message,
-//           to_name: 'Deepak Jadon',
-//         },
-//         EMAILJS_PUBLIC_KEY
-//       );
-
-//       // Only send auto-reply if template ID is configured
-//       if (EMAILJS_AUTO_REPLY_TEMPLATE_ID && EMAILJS_AUTO_REPLY_TEMPLATE_ID !== 'template_YOUR_AUTO_REPLY_ID') {
-//         try {
-//           await emailjs.send(
-//             EMAILJS_SERVICE_ID,
-//             EMAILJS_AUTO_REPLY_TEMPLATE_ID,
-//             {
-//               to_name: formData.name,
-//               to_email: formData.email,
-//               subject: formData.subject || 'No Subject',
-//               from_name: 'Deepak Jadon',
-//             },
-//             EMAILJS_PUBLIC_KEY
-//           );
-//         } catch (autoReplyError) {
-//           console.log('Auto-reply failed, but main email sent successfully:', autoReplyError);
-//         }
-//       }
-      
-//       setIsSubmitted(true);
-//       toast({
-//         title: "Message sent successfully!",
-//         description: "Your message has been sent to Deepak Jadon. You'll hear back soon!",
-//       });
-//       setFormData({ name: '', email: '', subject: '', message: '' });
-//     } catch (error) {
-//       console.error('EmailJS Error:', error);
-//       toast({
-//         title: "Failed to send message",
-//         description: "Please try again or contact me directly via email.",
-//         variant: "destructive",
-//       });
-//     } finally {
-//       setIsSubmitting(false);
-//     }
-//   };
-
-//   const contactInfo = [
-//     { icon: Mail, label: 'Email', value: 'deepakjadon1907@gmail.com', href: 'mailto:deepakjadon1907@gmail.com' },
-//     { icon: Phone, label: 'Phone', value: '+91 91493 70081', href: 'tel:+919149370081' },
-//     { icon: MapPin, label: 'Location', value: 'Mathura, Uttar Pradesh, India', href: null },
-//   ];
-
-//   const socialLinks = [
-//     { icon: Github, label: 'GitHub', href: 'https://github.com/deepakjadon1902' },
-//     { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/deepak-jadon-612487272' },
-//   ];
-
-//   return (
-//     <main className="pt-24 pb-16 sm:pt-32 sm:pb-24 relative overflow-hidden">
-//       {/* Background Pattern */}
-//       <div className="absolute inset-0 tech-pattern opacity-50" />
-
-//       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-//         <SectionHeading
-//           title="Get in Touch"
-//           subtitle="Have a project in mind? Let's discuss how we can work together"
-//         />
-
-//         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-//           {/* Contact Info */}
-//           <motion.div
-//             initial={{ opacity: 0, x: -30 }}
-//             animate={{ opacity: 1, x: 0 }}
-//             transition={{ duration: 0.6 }}
-//             className="lg:col-span-2 space-y-6"
-//           >
-//             <div className="p-6 sm:p-8 rounded-2xl bg-navy text-white">
-//               <h3 className="text-xl font-bold mb-6">Let's Connect</h3>
-              
-//               <div className="space-y-4 mb-8">
-//                 {contactInfo.map(({ icon: Icon, label, value, href }) => (
-//                   <div key={label} className="flex items-start gap-4">
-//                     <div className="w-10 h-10 rounded-lg bg-sky/20 flex items-center justify-center flex-shrink-0">
-//                       <Icon size={18} className="text-sky" />
-//                     </div>
-//                     <div>
-//                       <p className="text-xs text-white/60">{label}</p>
-//                       {href ? (
-//                         <a href={href} className="text-sm hover:text-sky transition-colors">
-//                           {value}
-//                         </a>
-//                       ) : (
-//                         <p className="text-sm">{value}</p>
-//                       )}
-//                     </div>
-//                   </div>
-//                 ))}
-//               </div>
-
-//               <div>
-//                 <p className="text-sm text-white/60 mb-4">Connect with me</p>
-//                 <div className="flex gap-3">
-//                   {socialLinks.map(({ icon: Icon, label, href }) => (
-//                     <motion.a
-//                       key={label}
-//                       href={href}
-//                       target="_blank"
-//                       rel="noopener noreferrer"
-//                       whileHover={{ scale: 1.1, y: -2 }}
-//                       whileTap={{ scale: 0.95 }}
-//                       className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-sky transition-colors"
-//                       aria-label={label}
-//                     >
-//                       <Icon size={18} />
-//                     </motion.a>
-//                   ))}
-//                 </div>
-//               </div>
-//             </div>
-
-//             {/* Availability Card */}
-//             <div className="p-6 rounded-2xl bg-sky/10 border border-sky/20">
-//               <div className="flex items-center gap-3 mb-3">
-//                 <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-//                 <span className="font-medium text-navy">Currently Available</span>
-//               </div>
-//               <p className="text-sm text-muted-foreground">
-//                 Open for remote work and freelance projects. Let's build something amazing together!
-//               </p>
-//             </div>
-//           </motion.div>
-
-//           {/* Contact Form */}
-//           <motion.div
-//             initial={{ opacity: 0, x: 30 }}
-//             animate={{ opacity: 1, x: 0 }}
-//             transition={{ duration: 0.6, delay: 0.2 }}
-//             className="lg:col-span-3"
-//           >
-//             <div className="p-6 sm:p-8 rounded-2xl bg-background border border-border shadow-lg">
-//               {isSubmitted ? (
-//                 <motion.div
-//                   initial={{ opacity: 0, scale: 0.9 }}
-//                   animate={{ opacity: 1, scale: 1 }}
-//                   className="text-center py-12"
-//                 >
-//                   <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-//                     <CheckCircle2 size={32} className="text-green-600" />
-//                   </div>
-//                   <h3 className="text-xl font-bold text-navy mb-2">Message Sent Successfully! 🎉</h3>
-//                   <p className="text-muted-foreground mb-6">
-//                     Your message has been successfully sent to <strong>Deepak Jadon</strong>.<br />
-//                     <span className="text-sm">You'll receive a response within 24-48 hours.</span>
-//                   </p>
-//                   <button
-//                     onClick={() => setIsSubmitted(false)}
-//                     className="text-sky hover:underline font-medium"
-//                   >
-//                     Send another message
-//                   </button>
-//                 </motion.div>
-//               ) : (
-//                 <form onSubmit={handleSubmit} className="space-y-6">
-//                   <div className="grid sm:grid-cols-2 gap-6">
-//                     <div>
-//                       <label htmlFor="name" className="block text-sm font-medium text-navy mb-2">
-//                         Name <span className="text-destructive">*</span>
-//                       </label>
-//                       <input
-//                         type="text"
-//                         id="name"
-//                         name="name"
-//                         value={formData.name}
-//                         onChange={handleChange}
-//                         required
-//                         className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sky/50 focus:border-sky transition-all"
-//                         placeholder="Your name"
-//                       />
-//                     </div>
-//                     <div>
-//                       <label htmlFor="email" className="block text-sm font-medium text-navy mb-2">
-//                         Email <span className="text-destructive">*</span>
-//                       </label>
-//                       <input
-//                         type="email"
-//                         id="email"
-//                         name="email"
-//                         value={formData.email}
-//                         onChange={handleChange}
-//                         required
-//                         className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sky/50 focus:border-sky transition-all"
-//                         placeholder="your@email.com"
-//                       />
-//                     </div>
-//                   </div>
-
-//                   <div>
-//                     <label htmlFor="subject" className="block text-sm font-medium text-navy mb-2">
-//                       Subject
-//                     </label>
-//                     <input
-//                       type="text"
-//                       id="subject"
-//                       name="subject"
-//                       value={formData.subject}
-//                       onChange={handleChange}
-//                       className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sky/50 focus:border-sky transition-all"
-//                       placeholder="What's this about?"
-//                     />
-//                   </div>
-
-//                   <div>
-//                     <label htmlFor="message" className="block text-sm font-medium text-navy mb-2">
-//                       Message <span className="text-destructive">*</span>
-//                     </label>
-//                     <textarea
-//                       id="message"
-//                       name="message"
-//                       value={formData.message}
-//                       onChange={handleChange}
-//                       required
-//                       rows={5}
-//                       className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sky/50 focus:border-sky transition-all resize-none"
-//                       placeholder="Tell me about your project..."
-//                     />
-//                   </div>
-
-//                   <motion.button
-//                     type="submit"
-//                     disabled={isSubmitting}
-//                     whileHover={{ scale: 1.02 }}
-//                     whileTap={{ scale: 0.98 }}
-//                     className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-sky text-white font-medium shadow-sky hover:bg-sky-dark transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-//                   >
-//                     {isSubmitting ? (
-//                       <>
-//                         <Loader2 size={20} className="animate-spin" />
-//                         Sending...
-//                       </>
-//                     ) : (
-//                       <>
-//                         <Send size={20} />
-//                         Send Message
-//                       </>
-//                     )}
-//                   </motion.button>
-//                 </form>
-//               )}
-//             </div>
-//           </motion.div>
-//         </div>
-//       </div>
-//     </main>
-//   );
-// };
-
-// export default Contact;
-
-
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Send, Mail, Phone, MapPin, Github, Linkedin, CheckCircle2, Loader2 } from 'lucide-react';
+import type { ChangeEvent, FormEvent } from 'react';
+import { ArrowRight, ArrowUpRight, Check, CheckCircle2, Copy, Github, Linkedin, Loader2, Mail, MapPin, Phone } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import { useToast } from '@/hooks/use-toast';
-import SectionHeading from '@/components/SectionHeading';
+import PageIntro from '@/components/PageIntro';
+import { profile } from '@/data/portfolio';
 
-const Contact = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+const initialForm = { name: '', email: '', subject: '', message: '' };
 
-  // EmailJS Configuration
-  const EMAILJS_SERVICE_ID = 'service_8r71maa';
-  const EMAILJS_TEMPLATE_ID = 'template_24zgst5';
-  const EMAILJS_AUTO_REPLY_TEMPLATE_ID = 'template_YOUR_AUTO_REPLY_ID'; // Add your auto-reply template ID here
-  const EMAILJS_PUBLIC_KEY = 'hRvRaFAOHU2s1ZEeZ';
-  
-  // WhatsApp Configuration
-  const WHATSAPP_NUMBER = '919149370081'; // Your WhatsApp number (without + sign)
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+export default function Contact() {
+  const [form, setForm] = useState(initialForm);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
+  const [copied, setCopied] = useState(false);
+  const [copyError, setCopyError] = useState(false);
+  const change = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm(previous => ({ ...previous, [event.target.name]: event.target.value }));
+    setError('');
   };
-
-  const sendToWhatsApp = (data: typeof formData) => {
-    // Format the message for WhatsApp
-    const whatsappMessage = `*New Contact Form Submission*%0A%0A*Name:* ${encodeURIComponent(data.name)}%0A*Email:* ${encodeURIComponent(data.email)}%0A*Subject:* ${encodeURIComponent(data.subject || 'No Subject')}%0A%0A*Message:*%0A${encodeURIComponent(data.message)}`;
-    
-    // Create WhatsApp URL
-    const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
-    
-    // Open WhatsApp in a new tab
-    window.open(whatsappURL, '_blank');
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (sending) return;
+    if (!form.name.trim() || !form.message.trim()) { setError('Please enter your name and a message.'); return; }
+    setSending(true); setError('');
     try {
-      // Send email to you (the recipient)
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject || 'No Subject',
-          message: formData.message,
-          to_name: 'Deepak Jadon',
-        },
-        EMAILJS_PUBLIC_KEY
-      );
-
-      // Only send auto-reply if template ID is configured
-      if (EMAILJS_AUTO_REPLY_TEMPLATE_ID && EMAILJS_AUTO_REPLY_TEMPLATE_ID !== 'template_YOUR_AUTO_REPLY_ID') {
-        try {
-          await emailjs.send(
-            EMAILJS_SERVICE_ID,
-            EMAILJS_AUTO_REPLY_TEMPLATE_ID,
-            {
-              to_name: formData.name,
-              to_email: formData.email,
-              subject: formData.subject || 'No Subject',
-              from_name: 'Deepak Jadon',
-            },
-            EMAILJS_PUBLIC_KEY
-          );
-        } catch (autoReplyError) {
-          console.log('Auto-reply failed, but main email sent successfully:', autoReplyError);
-        }
-      }
-      
-      // Send form details to WhatsApp
-      sendToWhatsApp(formData);
-      
-      setIsSubmitted(true);
-      toast({
-        title: "Message sent successfully!",
-        description: "Your message has been sent to Deepak Jadon. You'll hear back soon!",
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      toast({
-        title: "Failed to send message",
-        description: "Please try again or contact me directly via email.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+      await emailjs.send('service_8r71maa', 'template_24zgst5', {
+        from_name: form.name.trim(), from_email: form.email.trim(),
+        subject: form.subject.trim() || 'Portfolio inquiry', message: form.message.trim(), to_name: profile.name,
+      }, { publicKey: 'hRvRaFAOHU2s1ZEeZ' });
+      setSent(true); setForm(initialForm);
+    } catch {
+      setError('Your message could not be sent. Please try again, or email me directly using the address alongside this form.');
+    } finally { setSending(false); }
   };
-
-  const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'deepakjadon1907@gmail.com', href: 'mailto:deepakjadon1907@gmail.com' },
-    { icon: Phone, label: 'Phone', value: '+91 91493 70081', href: 'tel:+919149370081' },
-    { icon: MapPin, label: 'Location', value: 'Mathura, Uttar Pradesh, India', href: null },
-  ];
-
-  const socialLinks = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com/deepakjadon1902' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/deepak-jadon-612487272' },
-  ];
-
-  return (
-    <main className="pt-24 pb-16 sm:pt-32 sm:pb-24 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 tech-pattern opacity-50" />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <SectionHeading
-          title="Get in Touch"
-          subtitle="Have a project in mind? Let's discuss how we can work together"
-        />
-
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-2 space-y-6"
-          >
-            <div className="p-6 sm:p-8 rounded-2xl bg-navy text-white">
-              <h3 className="text-xl font-bold mb-6">Let's Connect</h3>
-              
-              <div className="space-y-4 mb-8">
-                {contactInfo.map(({ icon: Icon, label, value, href }) => (
-                  <div key={label} className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-sky/20 flex items-center justify-center flex-shrink-0">
-                      <Icon size={18} className="text-sky" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-white/60">{label}</p>
-                      {href ? (
-                        <a href={href} className="text-sm hover:text-sky transition-colors">
-                          {value}
-                        </a>
-                      ) : (
-                        <p className="text-sm">{value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
+  const copyEmail = async () => {
+    try { await navigator.clipboard.writeText(profile.email); setCopied(true); setCopyError(false); }
+    catch { setCopyError(true); }
+  };
+  return <main id="main" tabIndex={-1}>
+    <div className="shell page-shell contact-page">
+      <PageIntro eyebrow="Contact" title={<>Let’s talk<span className="accent">.</span></>} description="Have a project to discuss or a role in mind? Send a message, or reach me directly by email." />
+      <div className="contact-layout">
+        <aside className="contact-details">
+          <span className="availability">
+            <i />Open to remote & freelance work</span>
+          <h2>Get in touch.</h2>
+          <p>Share a few details about what you need, your timeline, and how I can help.</p>
+          <div className="contact-methods">
+            <div>
+              <Mail size={20} />
               <div>
-                <p className="text-sm text-white/60 mb-4">Connect with me</p>
-                <div className="flex gap-3">
-                  {socialLinks.map(({ icon: Icon, label, href }) => (
-                    <motion.a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-sky transition-colors"
-                      aria-label={label}
-                    >
-                      <Icon size={18} />
-                    </motion.a>
-                  ))}
-                </div>
+                <span className="mono">Email</span>
+                <a href={`mailto:${profile.email}`}>{profile.email}<ArrowUpRight size={15} />
+                </a>
+              </div>
+              <button className="icon-link" onClick={copyEmail} aria-label={copied ? 'Email address copied' : 'Copy email address'}>{copied ? <Check size={16} /> : <Copy size={16} />}</button>
+            </div>
+            <div>
+              <Phone size={20} />
+              <div>
+                <span className="mono">Phone</span>
+                <a href={profile.phoneLink}>{profile.phone}<ArrowUpRight size={15} />
+                </a>
               </div>
             </div>
-
-            {/* Availability Card */}
-            <div className="p-6 rounded-2xl bg-sky/10 border border-sky/20">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                <span className="font-medium text-navy">Currently Available</span>
+            <div>
+              <MapPin size={20} />
+              <div>
+                <span className="mono">Location</span>
+                <p>Mathura, Uttar Pradesh, India</p>
+                <span className="contact-timezone">India Standard Time · UTC +05:30</span>
               </div>
-              <p className="text-sm text-muted-foreground">
-                Open for remote work and freelance projects. Let's build something amazing together!
-              </p>
             </div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-3"
-          >
-            <div className="p-6 sm:p-8 rounded-2xl bg-background border border-border shadow-lg">
-              {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12"
-                >
-                  <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle2 size={32} className="text-green-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-navy mb-2">Message Sent Successfully! 🎉</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Your message has been successfully sent to <strong>Deepak Jadon</strong>.<br />
-                    <span className="text-sm">You'll receive a response within 24-48 hours.</span>
-                  </p>
-                  <button
-                    onClick={() => setIsSubmitted(false)}
-                    className="text-sky hover:underline font-medium"
-                  >
-                    Send another message
-                  </button>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-navy mb-2">
-                        Name <span className="text-destructive">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sky/50 focus:border-sky transition-all"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-navy mb-2">
-                        Email <span className="text-destructive">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sky/50 focus:border-sky transition-all"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-navy mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sky/50 focus:border-sky transition-all"
-                      placeholder="What's this about?"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-navy mb-2">
-                      Message <span className="text-destructive">*</span>
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-sky/50 focus:border-sky transition-all resize-none"
-                      placeholder="Tell me about your project..."
-                    />
-                  </div>
-
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-sky text-white font-medium shadow-sky hover:bg-sky-dark transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 size={20} className="animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={20} />
-                        Send Message
-                      </>
-                    )}
-                  </motion.button>
-                </form>
-              )}
+          </div>
+          <p className="copy-status" role="status">{copied ? 'Email address copied to clipboard.' : copyError ? 'Select the email address above to copy it.' : ''}</p>
+          <div className="contact-social">
+            <a href={profile.github} target="_blank" rel="noopener noreferrer">
+              <Github size={18} />GitHub <ArrowUpRight size={14} />
+            </a>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+              <Linkedin size={18} />LinkedIn <ArrowUpRight size={14} />
+            </a>
+          </div>
+        </aside>
+        <div className="contact-form-panel">{sent ? <div className="success-state" role="status">
+          <span>
+            <CheckCircle2 size={34} strokeWidth={1.5} />
+          </span>
+          <p className="eyebrow">THANKS FOR REACHING OUT</p>
+          <h2>Message received.</h2>
+          <p>Thanks for sharing a little about your project. I’ll read your message and get back to you by email.</p>
+          <button className="button button-secondary" onClick={() => setSent(false)}>Send another message <ArrowRight size={16} />
+          </button>
+        </div> : <form onSubmit={submit} aria-label="Project inquiry" aria-busy={sending}>
+          <div className="form-heading">
+            <span className="mono">Send a message</span>
+            <span className="mono">* Required</span>
+          </div>
+          <div className="form-row">
+            <div className="field">
+              <label htmlFor="name">Your name <span>*</span>
+              </label>
+              <input id="name" name="name" autoComplete="name" placeholder="Your full name" value={form.name} onChange={change} required minLength={2} maxLength={120} disabled={sending} />
             </div>
-          </motion.div>
-        </div>
+            <div className="field">
+              <label htmlFor="email">Email address <span>*</span>
+              </label>
+              <input id="email" name="email" type="email" autoComplete="email" placeholder="you@example.com" value={form.email} onChange={change} required maxLength={254} disabled={sending} />
+            </div>
+          </div>
+          <div className="field">
+            <label htmlFor="subject">Subject <span className="optional">Optional</span>
+            </label>
+            <input id="subject" name="subject" placeholder="A project, a role, a collaboration…" value={form.subject} onChange={change} maxLength={200} disabled={sending} />
+          </div>
+          <div className="field">
+            <label htmlFor="message">Your message <span>*</span>
+            </label>
+            <textarea id="message" name="message" placeholder="Tell me about the project, your goals, and any timeline you have in mind." value={form.message} onChange={change} required minLength={10} maxLength={5000} rows={5} disabled={sending} />
+          </div>{error && <p className="form-error" role="alert">{error}</p>}<button type="submit" className="button form-submit" disabled={sending}>{sending ? <>
+            <Loader2 size={17} className="animate-spin" />Sending your message…</> : <>Send message <ArrowUpRight size={18} />
+          </>}</button>
+          <p className="form-note">Sent via EmailJS. Your contact details and message are used to respond to your inquiry.</p>
+        </form>}</div>
       </div>
-    </main>
-  );
-};
 
-export default Contact;
+    </div>
+  </main>;
+}

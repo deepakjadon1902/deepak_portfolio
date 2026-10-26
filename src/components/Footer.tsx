@@ -1,93 +1,16 @@
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { ArrowUpRight, Github, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { profile } from '@/data/portfolio';
 
-const Footer = () => {
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/deepakjadon1902', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/deepak-jadon-612487272', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:deepakjadon1907@gmail.com', label: 'Email' },
-  ];
-
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Skills', path: '/skills' },
-    { name: 'Contact', path: '/contact' },
-  ];
-
+export default function Footer() {
   return (
-    <footer className="relative bg-navy text-white overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 grid-pattern" />
+    <footer className="site-footer">
+      <div className="shell footer-top">
+        <div><Link to="/" className="brand footer-brand">Deepak Jadon<span>.</span></Link><p>Full Stack Developer · Mathura, India</p></div>
+        <div className="footer-links"><Link to="/projects">Projects</Link><Link to="/resume">Resume</Link><Link to="/contact">Contact <ArrowUpRight size={14} /></Link></div>
+        <div className="social-links"><a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub, opens in a new tab"><Github size={19} /></a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn, opens in a new tab"><Linkedin size={19} /></a></div>
       </div>
-
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <Link to="/" className="inline-block mb-4">
-              <span className="text-2xl font-bold">
-                <span className="text-sky">D</span>eepak <span className="text-sky"> Jadon .</span>
-              </span>
-            </Link>
-            <p className="text-white/60 text-sm max-w-xs">
-              Full Stack Developer crafting exceptional digital experiences through innovative code and elegant design.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <nav className="flex flex-wrap gap-x-6 gap-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className="text-white/60 hover:text-sky text-sm transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          {/* Social */}
-          <div>
-            <h4 className="font-semibold mb-4">Connect</h4>
-            <div className="flex gap-3">
-              {socialLinks.map(({ icon: Icon, href, label }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white/60 hover:bg-sky hover:text-white transition-all"
-                  aria-label={label}
-                >
-                  <Icon size={18} />
-                </motion.a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} Deepak Jadon. All rights reserved.
-          </p>
-          <p className="text-white/40 text-sm flex items-center gap-1">
-            Made with <Heart size={14} className="text-sky fill-sky" /> in India
-          </p>
-        </div>
-      </div>
+      <div className="shell footer-bottom"><span>© {new Date().getFullYear()} Deepak Jadon</span><a href={`mailto:${profile.email}`}>{profile.email}</a><span>Designed & built with React</span></div>
     </footer>
   );
-};
-
-export default Footer;
+}
