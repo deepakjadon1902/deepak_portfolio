@@ -3,6 +3,7 @@ import type { ChangeEvent, FormEvent } from 'react';
 import { ArrowRight, ArrowUpRight, Check, CheckCircle2, Copy, Github, Linkedin, Loader2, Mail, MapPin, Phone } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import PageIntro from '@/components/PageIntro';
+import FlipText from '@/components/FlipText';
 import { profile } from '@/data/portfolio';
 
 const initialForm = { name: '', email: '', subject: '', message: '' };
@@ -44,7 +45,7 @@ export default function Contact() {
         <aside className="contact-details">
           <span className="availability">
             <i />Open to remote & freelance work</span>
-          <h2>Get in touch.</h2>
+          <h2><FlipText>Get in touch.</FlipText></h2>
           <p>Share a few details about what you need, your timeline, and how I can help.</p>
           <div className="contact-methods">
             <div>
@@ -88,7 +89,7 @@ export default function Contact() {
             <CheckCircle2 size={34} strokeWidth={1.5} />
           </span>
           <p className="eyebrow">THANKS FOR REACHING OUT</p>
-          <h2>Message received.</h2>
+          <h2><FlipText>Message received.</FlipText></h2>
           <p>Thanks for sharing a little about your project. I’ll read your message and get back to you by email.</p>
           <button className="button button-secondary" onClick={() => setSent(false)}>Send another message <ArrowRight size={16} />
           </button>

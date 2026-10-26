@@ -1,5 +1,7 @@
 import { ArrowUpRight, ArrowRight, Github } from 'lucide-react';
 import useReveal from '@/hooks/use-reveal';
+import useTilt from '@/hooks/use-tilt';
+import FlipText from '@/components/FlipText';
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 export interface Project {
@@ -25,15 +27,17 @@ const projectContext: Record<number, string> = {
 
 export default function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   const revealRef = useReveal<HTMLElement>();
+  const tiltRef = useTilt<HTMLAnchorElement>();
   return (
     <article ref={revealRef} className={`project-card project-tone-${index % 3}`}>
-      <a className="project-preview" href={project.liveUrl ?? project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}, opens in a new tab`}>
+      <a ref={tiltRef} className="project-preview tilt-surface" href={project.liveUrl ?? project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}, opens in a new tab`}>
         <img src={project.image} alt={`${project.title} website screenshot`} loading="lazy" width="960" height="600" />
+        <span className="tilt-glare" aria-hidden="true" />
         <span className="preview-open" aria-hidden="true"><ArrowUpRight size={20} /></span>
       </a>
       <div className="project-content">
         <p className="project-meta">{projectContext[project.id] ?? (project.category === 'Full-Stack' ? 'Full stack application' : 'Frontend development')}</p>
-        <h3>{project.title}</h3>
+        <h3><FlipText>{project.title}</FlipText></h3>
         <p className="project-description">{project.description}</p>
         <div className="tags" aria-label="Technologies">{project.tech.slice(0, 4).map(tech => <span key={tech}>{tech}</span>)}</div>
         <div className="project-actions">

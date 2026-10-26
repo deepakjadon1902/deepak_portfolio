@@ -5,7 +5,7 @@ import PageIntro from '@/components/PageIntro';
 import ContactCTA from '@/components/ContactCTA';
 import { projects } from '@/data/projects';
 
-const order = [14, 13, 11, 4, 2, 12, 3, 10, 1, 5, 6, 7, 8, 9];
+const order = [14, 13, 12, 4, 2, 11, 3, 10, 1, 5, 6, 7, 8, 9];
 const sorted = order.map(id => projects.find(project => project.id === id)!);
 const filters = ['All projects', 'Full-Stack', 'Frontend'] as const;
 

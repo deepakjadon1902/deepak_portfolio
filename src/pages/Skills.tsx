@@ -2,8 +2,33 @@ import { ArrowUpRight, Code2, GitBranch, Server, ShieldCheck } from 'lucide-reac
 import { Link } from 'react-router-dom';
 import PageIntro from '@/components/PageIntro';
 import ContactCTA from '@/components/ContactCTA';
+import FlipText from '@/components/FlipText';
+import SkillBadge from '@/components/SkillBadge';
+import useMotionLoop from '@/hooks/use-motion-loop';
 import { skillGroups } from '@/data/portfolio';
 const icons = [Code2, Server, ShieldCheck, GitBranch];
+
+function SkillGroup({ group, index }: { group: (typeof skillGroups)[number]; index: number }) {
+  const ref = useMotionLoop<HTMLElement>();
+  const Icon = icons[index];
+  return <section ref={ref} className="skill-group" id={group.id}>
+    <div className="skill-group-heading">
+      <span className="skill-icon"><Icon size={23} strokeWidth={1.5} /></span>
+      <div>
+        <span className="mono">0{index + 1}</span>
+        <h2><FlipText>{group.title}</FlipText></h2>
+        <p>{group.description}</p>
+      </div>
+    </div>
+    <ul className="skill-logos" aria-label={`${group.title} technologies and skills`}>
+      {group.skills.map((skill, skillIndex) => <SkillBadge name={skill} index={skillIndex} key={skill} />)}
+    </ul>
+    <div className="skill-application">
+      <span className="mono">What I build</span>
+      <p>{group.application}</p>
+    </div>
+  </section>;
+}
 
 export default function Skills() {
   return <main id="main" tabIndex={-1}>
@@ -20,26 +45,7 @@ export default function Skills() {
             </Link>
           </div>
         </aside>
-        <div className="skill-groups">{skillGroups.map((group, i) => {
-          const Icon = icons[i]; return <section className="skill-group" id={group.id} key={group.id}>
-            <div className="skill-group-heading">
-              <span className="skill-icon">
-                <Icon size={23} strokeWidth={1.5} />
-              </span>
-              <div>
-                <span className="mono">0{i + 1}</span>
-                <h2>{group.title}</h2>
-                <p>{group.description}</p>
-              </div>
-            </div>
-            <div className="skill-tags">{group.skills.map(skill => <span key={skill}>
-              <span className="skill-tag-dot" />{skill}</span>)}</div>
-            <div className="skill-application">
-              <span className="mono">What I build</span>
-              <p>{group.application}</p>
-            </div>
-          </section>;
-        })}</div>
+        <div className="skill-groups">{skillGroups.map((group, index) => <SkillGroup group={group} index={index} key={group.id} />)}</div>
       </div>
     </div>
     <ContactCTA />

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
+import FlipText from '@/components/FlipText';
 
 const navItems = [
   { name: 'Home', path: '/' }, { name: 'About', path: '/about' },
@@ -38,9 +39,9 @@ export default function Navbar() {
     <a href="#main" className="skip-link">Skip to content</a>
     <div className="shell nav-inner">
       <Link to="/" className="brand" aria-label="Deepak Jadon home">
-        <span className="brand-monogram">dj<span>.</span></span><span className="brand-fullname">Deepak Jadon</span>
+        <span className="brand-monogram">dj<span>.</span></span><span className="brand-fullname"><FlipText><span className="brand-initial-d">D</span>eepak <span className="brand-initial-j">J</span>adon</FlipText></span>
       </Link>
-      <nav className="desktop-nav" aria-label="Main navigation">{navItems.map(item => <NavLink key={item.path} to={item.path} end>{item.name}</NavLink>)}</nav>
+      <nav className="desktop-nav" aria-label="Main navigation">{navItems.map(item => <NavLink key={item.path} to={item.path} end><FlipText>{item.name}</FlipText></NavLink>)}</nav>
       <Link to="/contact" className="button button-small nav-contact">Contact <ArrowUpRight size={16} />
       </Link>
       <button ref={menuButton} className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? <X size={23} /> : <Menu size={23} />}</button>
